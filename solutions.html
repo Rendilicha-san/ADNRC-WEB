@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solutions - ADNRC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    header img {
+      max-width: 250px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .tagline {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 5px;
+      color: #333;
+    }
+
+    /* Navigation */
+    nav {
+      background: #2c3e50;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Search form placed after Support */
+    nav form {
+      margin-left: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav input[type="text"] {
+      padding: 6px 8px;
+      border-radius: 4px 0 0 4px;
+      border: none;
+      min-width: 180px;
+      font-size: 14px;
+    }
+    nav input[type="submit"] {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Main */
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #3498db;
+    }
+
+    /* Footer (adnrc.html style) */
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-left img {
+      max-width: 160px;
+      height: auto;
+    }
+    .footer-center a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+    }
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+    .footer-right a {
+      display: inline-block;
+      margin: 0 6px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      color: #2c3e50;
+      text-align: center;
+      line-height: 32px;
+      border-radius: 50%;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer-right a:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    /* Small screens tweak */
+    @media (max-width: 560px) {
+      nav input[type="text"] { min-width: 120px; }
+      .tagline { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
+    <div class="tagline">African Drylands Nexus Research Center</div>
+  </header>
+
+  <nav>
+    <a href="adnrc.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="research.html">Research</a>
+    <a href="data.html">Data</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="publications.html">Publications</a>
+    <a href="support.html">Support</a>
+
+    <!-- Search bar after Support -->
+    <form action="https://www.google.com/search" method="get" target="_blank" role="search" aria-label="Search ADNRC">
+      <input type="hidden" name="as_sitesearch" value="adnrc.org">
+      <input type="text" name="q" placeholder="Search ADNRC..." aria-label="Search ADNRC">
+      <input type="submit" value="Search">
+    </form>
+  </nav>
+
+  <main>
+    <section>
+      <h1>Solutions for Dryland Resilience</h1>
+      <p>
+        At ADNRC we translate research into field-ready solutions. Working with communities, governments, NGOs and the private sector, we co-design interventions across water, energy, food and ecosystems to build resilient dryland livelihoods.
+      </p>
+    </section>
+
+    <section>
+      <h2>Our Solutions Approach</h2>
+      <p>
+        Our approach blends rigorous science, open data and participatory design. We prioritize scalable, low-regret interventions that reduce vulnerability while enhancing long-term sustainability.
+      </p>
+    </section>
+
+    <section>
+      <h2>Key Solution Areas</h2>
+      <div class="solution-grid">
+        <div class="card">
+          <h3>Water Security</h3>
+          <p>Groundwater monitoring, recharge enhancement, solar-powered water systems, and drought early-warning systems.</p>
+        </div>
+
+        <div class="card">
+          <h3>Sustainable Food Systems</h3>
+          <p>Climate-smart cropping, agroforestry, restoration-based grazing, and market-based resilience measures.</p>
+        </div>
+
+        <div class="card">
+          <h3>Energy for Sustainable Water</h3>
+          <p>Solar irrigation design, off-grid energy for productive use, and integrated water-energy planning for drylands.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ecosystem Restoration</h3>
+          <p>Rangeland restoration, native species re-establishment, carbon sequestration initiatives, and nature-based solutions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Decision Support & Tools</h3>
+          <p>Interactive dashboards, mapping tools, WEFE trade-off models, and localized scenario planning for policymakers and communities.</p>
+        </div>
+
+        <div class="card">
+          <h3>Capacity & Policy</h3>
+          <p>Training, co-development of policy briefs, and institutional strengthening to embed resilient practices at scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Working Together</h2>
+      <p>
+        Effective solutions require partnerships. ADNRC collaborates with local communities, county governments, research institutions and international agencies to co-design, test and scale interventions that are equitable and evidence-based.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
+    </div>
+    <div class="footer-center">
+      <a href="#">Privacy notice</a>
+      <a href="#">Customer service</a>
+      <a href="#">Terms of use</a>
+      <a href="support.html">Contact</a>
+      <a href="#">Accessibility</a>
+    </div>
+    <div class="footer-right">
+      <a href="tel:+254700000000">☎</a>
+      <a href="mailto:contact@adnrc.org">✉</a>
+      <a href="#">in</a>
+      <a href="#">X</a>
+      <a href="#">🦋</a>
+      <a href="#">f</a>
+      <a href="#">▶</a>
+    </div>
+  </footer>
+
+</body>
+</html>
