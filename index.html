@@ -19,31 +19,27 @@
   <!-- Favicon -->
   <link rel="icon" href="assets/ADNRC_logo.png" type="image/png">
 
-  <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="ADNRC - African Drylands Nexus Research Center">
-  <meta property="og:description" content="ADNRC – African Drylands Nexus Research Center focuses on water, climate, and ecosystem research in dryland regions of Africa.">
-  <meta property="og:image" content="assets/ADNRC_logo.png">
-  <meta property="og:url" content="https://www.adnrc.com">
-  <meta property="og:type" content="website">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ADNRC - African Drylands Nexus Research Center">
-  <meta name="twitter:description" content="ADNRC – African Drylands Nexus Research Center focuses on water, climate, and ecosystem research in dryland regions of Africa.">
-  <meta name="twitter:image" content="assets/ADNRC_logo.png">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Embedded Styles -->
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
     }
     header {
-      background: white;
+      background: #fff;
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
+      border-bottom: 1px solid #ddd;
     }
     header img {
       max-width: 250px;
@@ -52,10 +48,10 @@
       margin: 0 auto;
     }
     .tagline {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 5px;
-      color: #333;
+      font-size: 22px;
+      font-weight: 500;
+      margin-top: 10px;
+      color: #2c3e50;
     }
     nav {
       background: #2c3e50;
@@ -63,23 +59,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px;
+      padding: 12px 10px;
       flex-wrap: wrap;
+      gap: 15px;
     }
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
+      font-weight: 500;
     }
     nav a:hover {
       text-decoration: underline;
     }
     nav form {
-      margin-left: 20px;
+      margin-left: 15px;
+      display: flex;
+      gap: 5px;
     }
     nav input[type="text"] {
-      padding: 5px;
+      padding: 5px 8px;
       border-radius: 3px;
       border: none;
     }
@@ -92,21 +90,29 @@
       cursor: pointer;
     }
     main {
-      padding: 20px;
+      padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
     }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+    }
+    section h1, section h2 {
+      color: #2c3e50;
+    }
+    section ul {
+      list-style: disc inside;
+      padding-left: 0;
     }
     footer {
       background: #2c3e50;
       color: #fff;
-      padding: 20px 40px;
+      padding: 25px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      gap: 20px;
     }
     .footer-left img {
       max-width: 160px;
@@ -116,6 +122,7 @@
       color: #fff;
       margin: 0 12px;
       text-decoration: none;
+      font-weight: 500;
     }
     .footer-center a:hover {
       text-decoration: underline;
@@ -123,16 +130,16 @@
     .footer-right a {
       display: inline-block;
       margin: 0 6px;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background: white;
       color: #2c3e50;
       text-align: center;
-      line-height: 32px;
+      line-height: 36px;
       border-radius: 50%;
       font-size: 16px;
       text-decoration: none;
-      font-weight: bold;
+      transition: all 0.3s ease;
     }
     .footer-right a:hover {
       background: #3498db;
@@ -167,7 +174,7 @@
     <section>
       <h1>African Drylands Nexus Research Center (ADNRC)</h1>
       <p>
-        𝗧𝗵𝗲 𝗔𝗳𝗿𝗶𝗰𝗮𝗻 𝗗𝗿𝘆𝗹𝗮𝗻𝗱𝘀 𝗡𝗲𝘅𝘂𝘀 𝗥𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗖𝗲𝗻𝘁𝗲𝗿 (𝗔𝗗𝗡𝗥𝗖) is a newly established, Kenya-based, research-driven NGO dedicated to advancing research on climate change and the Water–Energy–Food–Ecosystem (WEFE) nexus in Africa’s drylands.
+        The African Drylands Nexus Research Center (ADNRC) is a newly established, Kenya-based, research-driven NGO dedicated to advancing research on climate change and the Water–Energy–Food–Ecosystem (WEFE) nexus in Africa’s drylands.
       </p>
     </section>
 
@@ -201,15 +208,16 @@
       <a href="#">Accessibility</a>
     </div>
     <div class="footer-right">
-      <a href="tel:+254700000000">☎</a>
-      <a href="mailto:contact@adnrc.org">✉</a>
-      <a href="#">in</a>
-      <a href="#">X</a>
-      <a href="#">🦋</a>
-      <a href="#">f</a>
-      <a href="#">▶</a>
+      <a href="tel:+254700000000"><i class="fas fa-phone"></i></a>
+      <a href="mailto:contact@adnrc.org"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
   </footer>
 
 </body>
 </html>
+
