@@ -100,6 +100,16 @@
     }
     .section-block p { color: #444; }
 
+    .disclaimer {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 15px 20px;
+      border-radius: 4px;
+      color: #856404;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
     .publication-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -124,8 +134,9 @@
       border-radius: 4px;
       text-decoration: none;
       font-size: 14px;
+      cursor: not-allowed;
+      opacity: 0.7;
     }
-    .download-link:hover { background: #217dbb; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -225,18 +236,23 @@
       <p>ADNRC shares research outputs to inform science, policy, and practice in Africa’s drylands. Our publications include peer-reviewed articles, reports, working papers, and policy briefs.</p>
     </div>
 
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>Note:</strong> The publications listed below are placeholders for demonstration. Actual publications will be uploaded soon.
+    </div>
+
     <div class="section-block">
       <h2>Journal Articles</h2>
       <div class="publication-list">
         <div class="publication-card">
           <strong>Drought resilience in Northern Kenya: Integrating groundwater and surface water systems</strong><br>
           <em>Journal of Arid Environments, 2024</em><br>
-          <a href="#" class="download-link">Download PDF</a>
+          <a class="download-link">Download PDF</a>
         </div>
         <div class="publication-card">
           <strong>Carbon-water-food trade-offs in African drylands</strong><br>
           <em>Environmental Research Letters, 2025</em><br>
-          <a href="#" class="download-link">Download PDF</a>
+          <a class="download-link">Download PDF</a>
         </div>
       </div>
     </div>
@@ -247,12 +263,12 @@
         <div class="publication-card">
           <strong>State of Water Security in Kenya’s Drylands</strong> (2024)<br>
           Comprehensive report on groundwater, climate variability, and livelihoods.<br>
-          <a href="#" class="download-link">Download Report</a>
+          <a class="download-link">Download Report</a>
         </div>
         <div class="publication-card">
           <strong>Integrated WEFE Nexus Assessment for the Horn of Africa</strong> (2025)<br>
           Regional report linking water, energy, food, and ecosystems.<br>
-          <a href="#" class="download-link">Download Report</a>
+          <a class="download-link">Download Report</a>
         </div>
       </div>
     </div>
@@ -263,7 +279,7 @@
         <div class="publication-card">
           <strong>Groundwater for Climate Adaptation in ASAL Counties</strong> (2025)<br>
           Short policy recommendations for county governments and regional actors.<br>
-          <a href="#" class="download-link">Download Brief</a>
+          <a class="download-link">Download Brief</a>
         </div>
       </div>
     </div>
@@ -274,7 +290,7 @@
         <div class="publication-card">
           <strong>HydroBioSpace: A spatial framework for water-energy-food-carbon systems</strong><br>
           Technical discussion paper introducing ADNRC’s new modeling framework.<br>
-          <a href="#" class="download-link">Download Paper</a>
+          <a class="download-link">Download Paper</a>
         </div>
       </div>
     </div>
@@ -340,4 +356,5 @@
 
 </body>
 </html>
+
 
