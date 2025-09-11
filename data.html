@@ -12,6 +12,7 @@
       margin: 0;
       line-height: 1.6;
       color: #222;
+      background: #f9f9f9;
     }
 
     /* ===== HEADER ===== */
@@ -24,332 +25,166 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 30px;
-      flex-wrap: wrap;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
     }
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
     }
     .brand img {
-      max-height: 65px;
-      width: auto;
+      max-height: 65px; width: auto;
     }
     .brand span {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #222;
-      white-space: nowrap;
+      font-size: 1.4rem; font-weight: 600; color: #222; white-space: nowrap;
     }
-
     .nav-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
     }
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
     }
     .nav-links a {
-      color: #32373c;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s;
+      color: #32373c; text-decoration: none; font-weight: 500; font-size: 1rem; transition: color 0.3s;
     }
-    .nav-links a:hover {
-      color: #3498db;
-    }
-    .search-form {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .nav-links a:hover, .nav-links a.active { color: #3498db; }
+    .search-form { display: flex; align-items: center; gap: 6px; }
     .search-form input[type="text"] {
-      padding: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      outline: none;
+      padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; outline: none;
     }
     .search-form input[type="submit"] {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      background: #3498db;
-      color: #fff;
-      cursor: pointer;
+      padding: 6px 12px; border: none; border-radius: 4px; background: #3498db; color: #fff; cursor: pointer;
     }
-    .nav-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      color: #32373c;
-      cursor: pointer;
-    }
+    .nav-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: #32373c; cursor: pointer; }
     @media (max-width: 850px) {
       .brand span { display: none; }
       .nav-wrapper {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 20px;
-        background: #f8f9fa;
-        padding: 20px 0;
-        border-top: 1px solid #ddd;
+        display: none; width: 100%; flex-direction: column; gap: 20px;
+        background: #f8f9fa; padding: 20px 0; border-top: 1px solid #ddd;
       }
       .nav-wrapper.show { display: flex; }
       .nav-toggle { display: block; }
     }
 
     /* ===== HERO ===== */
-    .data-hero {
+    .page-hero {
       position: relative;
       background: url('assets/data-hero.jpg') center/cover no-repeat;
       height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff;
     }
-    .data-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
+    .page-hero::after {
+      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.55);
     }
     .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 0 20px;
+      position: relative; z-index: 1; max-width: 900px; padding: 0 20px;
     }
-    .data-hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .data-hero p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    /* ===== QUICK NAV ===== */
-    .quick-nav {
-      background: #f5f6f7;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 20px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .quick-nav a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .quick-nav a:hover {
-      color: #3498db;
-    }
+    .page-hero h1 { font-size: 2.7rem; margin: 0 0 8px; }
+    .page-hero p { font-size: 1.15rem; margin: 0; opacity: 0.95; }
 
     /* ===== MAIN CONTENT ===== */
-    .data-container {
+    .pub-container {
       max-width: 1100px;
       margin: 60px auto;
       padding: 0 30px;
     }
     .section-block {
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
     .section-block h2 {
       color: #2c3e50;
       font-size: 2rem;
       border-left: 4px solid #3498db;
       padding-left: 12px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+    }
+    .section-block p { color: #444; }
+
+    .disclaimer {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 15px 20px;
+      border-radius: 4px;
+      color: #856404;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
     }
 
-    .dataset-grid {
+    .publication-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
-    .dataset-card {
+    .publication-card {
       background: #fff;
-      border: 1px solid #eee;
-      border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
-    .dataset-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-    .dataset-card h3 {
-      margin-top: 0;
-      color: #2c3e50;
-      font-size: 1.2rem;
-    }
-    .dataset-card p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-    .dataset-card a {
+    .publication-card:hover { transform: translateY(-3px); }
+    .publication-card strong { color: #2c3e50; }
+    .publication-card em { color: #555; font-style: normal; }
+    .download-link {
       display: inline-block;
-      margin-top: 12px;
-      padding: 8px 14px;
+      margin-top: 10px;
+      padding: 8px 12px;
       background: #3498db;
       color: #fff;
       border-radius: 4px;
       text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .dataset-card a:hover {
-      background: #217dbb;
+      font-size: 14px;
+      cursor: not-allowed;
+      opacity: 0.7;
     }
 
-    ul { padding-left: 20px; }
-
-    /* ===== FOOTER (Standard) ===== */
+    /* ===== FOOTER ===== */
     footer {
       background: linear-gradient(135deg, #1e2a38, #2c3e50);
-      color: #f0f0f0;
-      padding: 70px 20px 30px;
-      border-top: 4px solid #3498db;
-      margin-top: 80px;
+      color: #f0f0f0; padding: 70px 20px 30px; border-top: 4px solid #3498db; margin-top: 60px;
     }
     .footer-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 50px;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: start;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px; max-width: 1200px; margin: 0 auto; align-items: start;
     }
     .footer-logo {
-      width: 90px;
-      height: 90px;
-      object-fit: contain;
-      border-radius: 6px;
-      background: #fff;
-      padding: 6px;
+      width: 90px; height: 90px; object-fit: contain; border-radius: 6px; background: #fff; padding: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .brand-top {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 15px;
-    }
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .org-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #fff;
-      margin: 0 0 6px;
-    }
-    .tagline {
-      color: #ccc;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin: 0;
-      max-width: 300px;
-    }
+    .brand-top { display: flex; align-items: center; gap: 18px; margin-bottom: 15px; }
+    .brand-text { display: flex; flex-direction: column; }
+    .org-name { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+    .tagline { color: #ccc; font-size: 0.95rem; line-height: 1.4; margin: 0; max-width: 300px; }
     .footer-col h4 {
-      margin-bottom: 18px;
-      font-size: 1.1rem;
-      position: relative;
-      padding-bottom: 6px;
+      margin-bottom: 18px; font-size: 1.1rem; position: relative; padding-bottom: 6px;
     }
     .footer-col h4::after {
-      content: "";
-      position: absolute;
-      width: 50px;
-      height: 2px;
-      background: #3498db;
-      bottom: 0;
-      left: 0;
+      content: ""; position: absolute; width: 50px; height: 2px; background: #3498db; bottom: 0; left: 0;
     }
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .footer-col ul li {
-      margin-bottom: 10px;
-    }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 10px; }
     .footer-col ul li a {
-      color: #ddd;
-      text-decoration: none;
-      display: inline-block;
-      transition: color 0.3s, padding-left 0.3s;
+      color: #ddd; text-decoration: none; display: inline-block; transition: color 0.3s, padding-left 0.3s;
     }
-    .footer-col ul li a:hover {
-      color: #fff;
-      padding-left: 5px;
-    }
-    .social {
-      margin-top: 15px;
-    }
+    .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+    .social { margin-top: 15px; }
     .social a {
-      display: inline-block;
-      width: 38px;
-      height: 38px;
-      background: #3498db;
-      color: #fff;
-      text-align: center;
-      line-height: 38px;
-      border-radius: 50%;
-      margin-right: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s, background 0.3s;
+      display: inline-block; width: 38px; height: 38px; background: #3498db; color: #fff; text-align: center;
+      line-height: 38px; border-radius: 50%; margin-right: 10px; text-decoration: none; font-weight: bold;
+      font-size: 1.1rem; transition: transform 0.3s, background 0.3s;
     }
-    .social a:hover {
-      background: #217dbb;
-      transform: translateY(-3px);
-    }
-    .newsletter {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .social a:hover { background: #217dbb; transform: translateY(-3px); }
+    .newsletter { display: flex; flex-direction: column; gap: 10px; }
     .newsletter input {
-      padding: 12px;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.95rem;
+      padding: 12px; border: none; border-radius: 4px; font-size: 0.95rem;
     }
     .newsletter button {
-      background: #3498db;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 1rem;
+      background: #3498db; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer;
+      transition: background 0.3s; font-size: 1rem;
     }
-    .newsletter button:hover {
-      background: #217dbb;
-    }
+    .newsletter button:hover { background: #217dbb; }
     .footer-bottom {
-      border-top: 1px solid #445a6f;
-      text-align: center;
-      margin-top: 60px;
-      padding-top: 20px;
-      font-size: 0.9rem;
-      color: #bbb;
+      border-top: 1px solid #445a6f; text-align: center; margin-top: 60px; padding-top: 20px; font-size: 0.9rem; color: #bbb;
     }
     @media (max-width: 900px) {
       .footer-container { grid-template-columns: 1fr 1fr; }
@@ -360,7 +195,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <!-- HEADER -->
@@ -389,95 +223,66 @@
   </div>
 
   <!-- HERO -->
-  <section class="data-hero">
+  <section class="page-hero">
     <div class="hero-content">
-      <h1>ADNRC Data Portal</h1>
-      <p>Open data powering science, policy, and climate resilience in Africa’s drylands</p>
+      <h1>Our Data Resources</h1>
+      <p>Open data supporting research and innovation across Africa’s drylands</p>
     </div>
   </section>
 
-  <!-- QUICK NAV -->
-  <div class="quick-nav">
-    <a href="#datasets">Datasets</a>
-    <a href="#tools">Tools</a>
-    <a href="#access">Access</a>
-    <a href="#contribute">Contribute</a>
-  </div>
+  <!-- MAIN -->
+  <div class="pub-container">
+    <div class="section-block">
+      <p>ADNRC provides curated datasets to support science, policy, and development work in Africa’s drylands, including climate, water, energy, food, and ecosystem data.</p>
+    </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="data-container">
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>Note:</strong> The data resources listed below are placeholders for demonstration. Actual datasets will be uploaded soon.
+    </div>
 
-    <!-- Featured Datasets -->
-    <div id="datasets" class="section-block">
-      <h2>Featured Datasets</h2>
-      <div class="dataset-grid">
-        <div class="dataset-card">
-          <h3>Dryland Water Resources</h3>
-          <p>Groundwater levels, recharge rates, and water quality data from boreholes across Northern Kenya and neighboring drylands.</p>
-          <a href="#">Access Data</a>
+    <div class="section-block">
+      <h2>Climate Data</h2>
+      <div class="publication-list">
+        <div class="publication-card">
+          <strong>Rainfall and Temperature Trends (1981–2023)</strong><br>
+          <em>Daily time-series for Northern Kenya</em><br>
+          <a class="download-link">Download Dataset</a>
         </div>
-        <div class="dataset-card">
-          <h3>Drought & Hydromet Indicators</h3>
-          <p>SPI, SPEI, streamflow anomalies, and seasonal outlooks to inform drought planning and early action.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Climate & Weather</h3>
-          <p>Historical and near-real-time rainfall, temperature, and heat stress indices for dryland risk assessment.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Land Use & Vegetation</h3>
-          <p>Satellite-derived land cover, NDVI, land degradation hotspots, and rangeland condition metrics.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Food Systems & Markets</h3>
-          <p>Crop calendars, market prices, livestock mobility, and nutrition indicators linked to water availability.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Rangeland Forage Productivity</h3>
-          <p>Pasture biomass estimates, grazing pressure, and water point proximity for pastoral decision support.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Energy Access & Solar Irrigation</h3>
-          <p>Solar resource potential, pump performance, and energy-water cost curves for smallholder irrigation.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Socio-Economic & Livelihoods</h3>
-          <p>Household surveys, poverty and vulnerability mapping, and access to services in dryland settlements.</p>
-          <a href="#">Access Data</a>
+        <div class="publication-card">
+          <strong>Climate Projections (CMIP6)</strong><br>
+          <em>Downscaled scenarios for East Africa</em><br>
+          <a class="download-link">Download Dataset</a>
         </div>
       </div>
     </div>
 
-    <!-- Tools -->
-    <div id="tools" class="section-block">
-      <h2>Tools & Platforms</h2>
-      <ul>
-        <li><strong>Drylands Map Explorer:</strong> Interactive maps for water points, vegetation, and climate anomalies.</li>
-        <li><strong>Climate Risk Dashboard:</strong> Drought monitoring, seasonal forecasts, and impact outlooks.</li>
-        <li><strong>Groundwater Atlas:</strong> Aquifer boundaries, recharge zones, quality classes, and well logs.</li>
-        <li><strong>Food Systems Monitor:</strong> Crop conditions, market alerts, and nutrition risk overlays.</li>
-        <li><strong>Energy Planning Toolkit:</strong> Solar PV suitability, mini-grid siting, and water-energy modeling.</li>
-      </ul>
+    <div class="section-block">
+      <h2>Hydrology & Water</h2>
+      <div class="publication-list">
+        <div class="publication-card">
+          <strong>Groundwater Monitoring Wells Database</strong><br>
+          <em>Point data with depth and seasonal trends</em><br>
+          <a class="download-link">Download Dataset</a>
+        </div>
+        <div class="publication-card">
+          <strong>Surface Water Bodies (2024)</strong><br>
+          <em>Mapped seasonal rivers, pans, and lakes</em><br>
+          <a class="download-link">Download Dataset</a>
+        </div>
+      </div>
     </div>
 
-    <!-- Access -->
-    <div id="access" class="section-block">
-      <h2>Access, Licensing & Formats</h2>
-      <p>ADNRC promotes open science. Most datasets are released under <a href="https://creativecommons.org/licenses/" target="_blank">Creative Commons</a> licenses. Sensitive data may require a request or a partnership agreement. Downloads are available as CSV, GeoJSON, and TIFF/NetCDF, with metadata in JSON or ISO-19115.</p>
+    <div class="section-block">
+      <h2>Land & Ecosystems</h2>
+      <div class="publication-list">
+        <div class="publication-card">
+          <strong>Land Cover Maps (2000–2023)</strong><br>
+          <em>High-resolution satellite-derived maps</em><br>
+          <a class="download-link">Download Dataset</a>
+        </div>
+      </div>
     </div>
-
-    <!-- Contribute -->
-    <div id="contribute" class="section-block">
-      <h2>Contribute & Collaborate</h2>
-      <p>We welcome data contributions from researchers, agencies, and communities. To share a dataset or request curation support, please contact our data team via <a href="support.html">Support</a>.</p>
-    </div>
-
   </div>
 
   <!-- FOOTER -->
@@ -531,7 +336,7 @@
     </div>
   </footer>
 
-  <!-- JS for nav toggle -->
+  <!-- JS: mobile nav toggle -->
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav-wrapper');
@@ -540,4 +345,5 @@
 
 </body>
 </html>
+
 
