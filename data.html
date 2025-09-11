@@ -1,185 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADNRC Data Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data – ADNRC</title>
+  <link rel="icon" href="assets/Logo.png" type="image/png" />
+
   <style>
     body {
-      font-family: "Baskerville Old Face", Arial, sans-serif;
+      font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
       margin: 0;
-      padding: 0;
       line-height: 1.6;
+      color: #222;
     }
-    header {
-      background: white;
-      text-align: center;
-      padding: 15px 0;
-    }
-    header img {
-      max-width: 250px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .tagline {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 5px;
-      color: #333;
-    }
-    nav {
-      background: #2c3e50;
-      color: #fff;
+
+    /* ===== HEADER ===== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 10px;
+      justify-content: space-between;
+      padding: 14px 30px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand img {
+      max-height: 65px;
+      width: auto;
+    }
+    .brand span {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #222;
+      white-space: nowrap;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 30px;
       flex-wrap: wrap;
     }
-    nav a {
-      color: #fff;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #32373c;
       text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .nav-links a:hover {
+      color: #3498db;
     }
-    nav form {
-      margin-left: 20px;
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    nav input[type="text"] {
-      padding: 5px;
-      border-radius: 3px;
+    .search-form input[type="text"] {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    .search-form input[type="submit"] {
+      padding: 6px 12px;
       border: none;
-    }
-    nav input[type="submit"] {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       background: #3498db;
-      color: white;
+      color: #fff;
       cursor: pointer;
     }
-    main {
-      padding: 20px;
+    .nav-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: #32373c;
+      cursor: pointer;
+    }
+    @media (max-width: 850px) {
+      .brand span { display: none; }
+      .nav-wrapper {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        background: #f8f9fa;
+        padding: 20px 0;
+        border-top: 1px solid #ddd;
+      }
+      .nav-wrapper.show { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* ===== HERO ===== */
+    .data-hero {
+      position: relative;
+      background: url('assets/data-hero.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .data-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .data-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .data-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== QUICK NAV ===== */
+    .quick-nav {
+      background: #f5f6f7;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .quick-nav a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .quick-nav a:hover {
+      color: #3498db;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .data-container {
       max-width: 1100px;
-      margin: auto;
+      margin: 60px auto;
+      padding: 0 30px;
     }
-    section {
-      margin-bottom: 40px;
+    .section-block {
+      margin-bottom: 80px;
     }
+    .section-block h2 {
+      color: #2c3e50;
+      font-size: 2rem;
+      border-left: 4px solid #3498db;
+      padding-left: 12px;
+      margin-bottom: 25px;
+    }
+
     .dataset-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
     }
     .dataset-card {
-      background: #f9f9f9;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
       padding: 20px;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .dataset-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
     .dataset-card h3 {
       margin-top: 0;
       color: #2c3e50;
+      font-size: 1.2rem;
     }
     .dataset-card p {
-      font-size: 14px;
+      font-size: 0.95rem;
       color: #555;
     }
     .dataset-card a {
       display: inline-block;
-      margin-top: 10px;
-      padding: 8px 12px;
+      margin-top: 12px;
+      padding: 8px 14px;
       background: #3498db;
       color: #fff;
       border-radius: 4px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 0.9rem;
     }
     .dataset-card a:hover {
-      background: #2980b9;
+      background: #217dbb;
     }
+
+    ul { padding-left: 20px; }
+
+    /* ===== FOOTER (Standard) ===== */
     footer {
-      background: #2c3e50;
-      color: #fff;
-      padding: 20px 40px;
+      background: linear-gradient(135deg, #1e2a38, #2c3e50);
+      color: #f0f0f0;
+      padding: 70px 20px 30px;
+      border-top: 4px solid #3498db;
+      margin-top: 80px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .footer-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .brand-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      margin-top: 40px;
+      gap: 18px;
+      margin-bottom: 15px;
     }
-    .footer-left img {
-      max-width: 160px;
-      height: auto;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
     }
-    .footer-center a {
+    .org-name {
+      font-size: 1.3rem;
+      font-weight: 700;
       color: #fff;
-      margin: 0 12px;
+      margin: 0 0 6px;
+    }
+    .tagline {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin: 0;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 6px;
+    }
+    .footer-col h4::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: #3498db;
+      bottom: 0;
+      left: 0;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #ddd;
       text-decoration: none;
-    }
-    .footer-center a:hover {
-      text-decoration: underline;
-    }
-    .footer-right a {
       display: inline-block;
-      margin: 0 6px;
-      width: 32px;
-      height: 32px;
-      background: white;
-      color: #2c3e50;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 5px;
+    }
+    .social {
+      margin-top: 15px;
+    }
+    .social a {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      background: #3498db;
+      color: #fff;
       text-align: center;
-      line-height: 32px;
+      line-height: 38px;
       border-radius: 50%;
-      font-size: 16px;
+      margin-right: 10px;
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
     }
-    .footer-right a:hover {
+    .social a:hover {
+      background: #217dbb;
+      transform: translateY(-3px);
+    }
+    .newsletter {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .newsletter input {
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    .newsletter button {
       background: #3498db;
-      color: white;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+    }
+    .newsletter button:hover {
+      background: #217dbb;
+    }
+    .footer-bottom {
+      border-top: 1px solid #445a6f;
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-container { grid-template-columns: 1fr; text-align: center; }
+      .brand-top { flex-direction: column; }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
-    <div class="tagline">African Drylands Nexus Research Center</div>
-  </header>
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="brand">
+      <img src="assets/Logo.png" alt="ADNRC Logo">
+      <span>African Drylands Nexus Research Center</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-wrapper">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="research.html">Research</a>
+        <a href="data.html" class="active">Data</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="publications.html">Publications</a>
+        <a href="support.html">Support</a>
+      </div>
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+        <input type="hidden" name="as_sitesearch" value="adnrc.com">
+        <input type="text" name="q" placeholder="Search ADNRC…">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+  </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="research.html">Research</a>
-    <a href="data.html">Data</a>
-    <a href="solutions.html">Solutions</a>
-    <a href="publications.html">Publications</a>
-    <a href="support.html">Support</a>
-    <!-- Search after Support for consistency -->
-    <form action="https://www.google.com/search" method="get" target="_blank">
-      <input type="hidden" name="as_sitesearch" value="adnrc.org">
-      <input type="text" name="q" placeholder="Search ADNRC...">
-      <input type="submit" value="Search">
-    </form>
-  </nav>
-
-  <main>
-    <section>
+  <!-- HERO -->
+  <section class="data-hero">
+    <div class="hero-content">
       <h1>ADNRC Data Portal</h1>
-      <p>
-        The ADNRC Data Portal provides access to datasets, maps, and tools that support research and decision-making in Africa’s drylands.
-        We curate WEFE (Water–Energy–Food–Ecosystems) datasets with a strong climate lens, prioritizing open, well-documented, and actionable data.
-      </p>
-    </section>
+      <p>Open data powering science, policy, and climate resilience in Africa’s drylands</p>
+    </div>
+  </section>
 
-    <section>
+  <!-- QUICK NAV -->
+  <div class="quick-nav">
+    <a href="#datasets">Datasets</a>
+    <a href="#tools">Tools</a>
+    <a href="#access">Access</a>
+    <a href="#contribute">Contribute</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="data-container">
+
+    <!-- Featured Datasets -->
+    <div id="datasets" class="section-block">
       <h2>Featured Datasets</h2>
       <div class="dataset-grid">
-        <!-- WATER -->
         <div class="dataset-card">
           <h3>Dryland Water Resources</h3>
           <p>Groundwater levels, recharge rates, and water quality data from boreholes across Northern Kenya and neighboring drylands.</p>
@@ -190,30 +421,19 @@
           <p>SPI, SPEI, streamflow anomalies, and seasonal outlooks to inform drought planning and early action.</p>
           <a href="#">Access Data</a>
         </div>
-
-        <!-- CLIMATE -->
         <div class="dataset-card">
           <h3>Climate & Weather</h3>
           <p>Historical and near-real-time rainfall, temperature, and heat stress indices for dryland risk assessment.</p>
           <a href="#">Access Data</a>
         </div>
-
-        <!-- ECOSYSTEMS / LAND -->
         <div class="dataset-card">
           <h3>Land Use & Vegetation</h3>
           <p>Satellite-derived land cover, NDVI, land degradation hotspots, and rangeland condition metrics.</p>
           <a href="#">Access Data</a>
         </div>
-
-        <!-- FOOD -->
         <div class="dataset-card">
           <h3>Food Systems & Markets</h3>
           <p>Crop calendars, market prices, livestock mobility, and nutrition indicators linked to water availability.</p>
-          <a href="#">Access Data</a>
-        </div>
-        <div class="dataset-card">
-          <h3>Dryland Agriculture Trials</h3>
-          <p>On-farm trials for drought-tolerant crops, soil moisture data, and irrigation performance in arid zones.</p>
           <a href="#">Access Data</a>
         </div>
         <div class="dataset-card">
@@ -221,29 +441,21 @@
           <p>Pasture biomass estimates, grazing pressure, and water point proximity for pastoral decision support.</p>
           <a href="#">Access Data</a>
         </div>
-
-        <!-- ENERGY -->
         <div class="dataset-card">
           <h3>Energy Access & Solar Irrigation</h3>
           <p>Solar resource potential, pump performance, and energy-water cost curves for smallholder irrigation.</p>
           <a href="#">Access Data</a>
         </div>
         <div class="dataset-card">
-          <h3>Mini-grid Performance & Demand</h3>
-          <p>Load profiles, reliability metrics, productive-use uptake, and nexus links to water and cold chains.</p>
-          <a href="#">Access Data</a>
-        </div>
-
-        <!-- SOCIO-ECONOMIC -->
-        <div class="dataset-card">
           <h3>Socio-Economic & Livelihoods</h3>
           <p>Household surveys, poverty and vulnerability mapping, and access to services in dryland settlements.</p>
           <a href="#">Access Data</a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section>
+    <!-- Tools -->
+    <div id="tools" class="section-block">
       <h2>Tools & Platforms</h2>
       <ul>
         <li><strong>Drylands Map Explorer:</strong> Interactive maps for water points, vegetation, and climate anomalies.</li>
@@ -252,47 +464,81 @@
         <li><strong>Food Systems Monitor:</strong> Crop conditions, market alerts, and nutrition risk overlays.</li>
         <li><strong>Energy Planning Toolkit:</strong> Solar PV suitability, mini-grid siting, and water-energy modeling.</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <!-- Access -->
+    <div id="access" class="section-block">
       <h2>Access, Licensing & Formats</h2>
-      <p>
-        ADNRC promotes open science. Most datasets are released under suitable
-        <a href="https://creativecommons.org/licenses/" target="_blank">Creative Commons</a> licenses. Sensitive data may require a request or a partnership agreement.
-        Downloads are typically available as CSV, GeoJSON, and TIFF/NetCDF for gridded products, with metadata in JSON or ISO-19115.
-      </p>
-    </section>
+      <p>ADNRC promotes open science. Most datasets are released under <a href="https://creativecommons.org/licenses/" target="_blank">Creative Commons</a> licenses. Sensitive data may require a request or a partnership agreement. Downloads are available as CSV, GeoJSON, and TIFF/NetCDF, with metadata in JSON or ISO-19115.</p>
+    </div>
 
-    <section>
+    <!-- Contribute -->
+    <div id="contribute" class="section-block">
       <h2>Contribute & Collaborate</h2>
-      <p>
-        We welcome data contributions from researchers, agencies, and communities. To share a dataset or request curation support,
-        please contact our data team via <a href="support.html">Support</a>.
-      </p>
-    </section>
-  </main>
+      <p>We welcome data contributions from researchers, agencies, and communities. To share a dataset or request curation support, please contact our data team via <a href="support.html">Support</a>.</p>
+    </div>
 
+  </div>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-left">
-      <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
+    <div class="footer-container">
+      <div class="footer-col footer-brand">
+        <div class="brand-top">
+          <img src="assets/footerlogo.png" alt="ADNRC Logo" class="footer-logo">
+          <div class="brand-text">
+            <h3 class="org-name">African Drylands Nexus Research Center</h3>
+            <p class="tagline">Advancing WEFE Nexus Research Across Africa’s Drylands</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="data.html">Data</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@adnrc.com">info@adnrc.com</a></li>
+          <li><a href="tel:+254710953283">+254 710 953 283</a></li>
+          <li>P.O. BOX 62000, Isiolo, Kenya</li>
+        </ul>
+        <div class="social">
+          <a href="#">in</a><a href="#">X</a><a href="#">f</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay Updated</h4>
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
     </div>
-    <div class="footer-center">
-      <a href="#">Privacy notice</a>
-      <a href="#">Customer service</a>
-      <a href="#">Terms of use</a>
-      <a href="support.html">Contact</a>
-      <a href="#">Accessibility</a>
-    </div>
-    <div class="footer-right">
-      <a href="tel:+254700000000">☎</a>
-      <a href="mailto:contact@adnrc.org">✉</a>
-      <a href="#">in</a>
-      <a href="#">X</a>
-      <a href="#">🦋</a>
-      <a href="#">f</a>
-      <a href="#">▶</a>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 African Drylands Nexus Research Center. All Rights Reserved.</p>
     </div>
   </footer>
 
+  <!-- JS for nav toggle -->
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-wrapper');
+    toggle.addEventListener('click', () => nav.classList.toggle('show'));
+  </script>
+
 </body>
 </html>
+
+

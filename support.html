@@ -1,220 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support ADNRC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – ADNRC</title>
+  <link rel="icon" href="assets/Logo.png" type="image/png" />
+
   <style>
     body {
-      font-family: "Baskerville Old Face", Arial, sans-serif;
+      font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
       margin: 0;
-      padding: 0;
       line-height: 1.6;
+      color: #222;
     }
-    header {
-      background: white;
-      text-align: center;
-      padding: 15px 0;
-    }
-    header img {
-      max-width: 250px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .tagline {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 5px;
-      color: #333;
-    }
-    nav {
-      background: #2c3e50;
-      color: #fff;
+
+    /* ===== HEADER ===== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 10px;
+      justify-content: space-between;
+      padding: 14px 30px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand img {
+      max-height: 65px;
+      width: auto;
+    }
+    .brand span {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #222;
+      white-space: nowrap;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 30px;
       flex-wrap: wrap;
     }
-    nav form {
-      margin-left: 20px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-    nav input[type="text"] {
-      padding: 5px;
-      border-radius: 3px;
-      border: none;
+    .nav-links a {
+      color: #32373c;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
-    nav input[type="submit"] {
-      padding: 5px 10px;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #3498db;
+    }
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-form input[type="text"] {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    .search-form input[type="submit"] {
+      padding: 6px 12px;
       border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       background: #3498db;
-      color: white;
+      color: #fff;
       cursor: pointer;
     }
-    nav a {
+
+    /* ===== HERO ===== */
+    .page-hero {
+      position: relative;
+      background: url('assets/support-hero.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       color: #fff;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
     }
-    main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 0 20px;
     }
-    section {
-      margin-bottom: 40px;
+    .page-hero h1 {
+      font-size: 2.7rem;
+      margin: 0 0 10px;
     }
-    h1, h2 {
+    .page-hero p {
+      font-size: 1.15rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 30px;
+    }
+    .container h2 {
       color: #2c3e50;
-    }
-    .support-option {
-      background: #f9f9f9;
-      padding: 20px;
-      border-left: 5px solid #3498db;
+      font-size: 2rem;
+      border-left: 4px solid #3498db;
+      padding-left: 12px;
       margin-bottom: 20px;
     }
-    footer {
-      background: #2c3e50;
-      color: #fff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+    .intro {
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+      color: #444;
+      text-align: justify;
     }
-    .footer-left img {
-      max-width: 160px;
-      height: auto;
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
     }
-    .footer-center a {
-      color: #fff;
-      margin: 0 12px;
-      text-decoration: none;
+    .support-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-left: 5px solid #3498db;
+      border-radius: 6px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .footer-center a:hover {
-      text-decoration: underline;
+    .support-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     }
-    .footer-right a {
-      display: inline-block;
-      margin: 0 6px;
-      width: 32px;
-      height: 32px;
-      background: white;
+    .support-card h3 {
+      margin-top: 0;
       color: #2c3e50;
+    }
+    .support-card p {
+      color: #555;
+      text-align: justify;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, #1e2a38, #2c3e50);
+      color: #f0f0f0;
+      padding: 70px 20px 30px;
+      border-top: 4px solid #3498db;
+      margin-top: 60px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .footer-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 15px;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .org-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+    .tagline {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin: 0;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 6px;
+    }
+    .footer-col h4::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: #3498db;
+      bottom: 0;
+      left: 0;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #ddd;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 5px;
+    }
+    .social {
+      margin-top: 15px;
+    }
+    .social a {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      background: #3498db;
+      color: #fff;
       text-align: center;
-      line-height: 32px;
+      line-height: 38px;
       border-radius: 50%;
-      font-size: 16px;
+      margin-right: 10px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.3s, background 0.3s;
     }
-    .footer-right a:hover {
-      background: #3498db;
-      color: white;
+    .social a:hover {
+      background: #217dbb;
+      transform: translateY(-3px);
+    }
+    .footer-bottom {
+      border-top: 1px solid #445a6f;
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-container { grid-template-columns: 1fr; text-align: center; }
+      .brand-top { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
-    <div class="tagline">African Drylands Nexus Research Center</div>
-  </header>
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="brand">
+      <img src="assets/Logo.png" alt="ADNRC Logo" />
+      <span>African Drylands Nexus Research Center</span>
+    </div>
+    <div class="nav-wrapper">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="research.html">Research</a>
+        <a href="data.html">Data</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="publications.html">Publications</a>
+        <a href="support.html" class="active">Support</a>
+      </div>
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+        <input type="hidden" name="as_sitesearch" value="adnrc.com" />
+        <input type="text" name="q" placeholder="Search ADNRC…" />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+  </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="research.html">Research</a>
-    <a href="data.html">Data</a>
-    <a href="solutions.html">Solutions</a>
-    <a href="publications.html">Publications</a>
-    <a href="support.html">Support</a>
-    <!-- Search bar moved here -->
-    <form action="https://www.google.com/search" method="get" target="_blank">
-      <input type="hidden" name="as_sitesearch" value="adnrc.org">
-      <input type="text" name="q" placeholder="Search ADNRC...">
-      <input type="submit" value="Search">
-    </form>
-  </nav>
-
-  <main>
-    <section>
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-content">
       <h1>Support ADNRC</h1>
-      <p>
-        Your support strengthens our mission to enhance water, energy, food, and ecosystem resilience across Africa’s drylands. 
-        Whether through funding, partnerships, or data sharing, your contribution drives real change in communities facing climate and environmental challenges.
-      </p>
-    </section>
+      <p>Help us build resilience in Africa’s drylands through science, partnerships, and action.</p>
+    </div>
+  </section>
 
-    <section class="support-option">
-      <h2>1. Fund Our Research</h2>
-      <p>
-        Financial contributions directly support field research, data platforms, and community-driven projects. 
-        By funding ADNRC, you are investing in solutions to drought, food insecurity, and sustainable energy in drylands.
-      </p>
-    </section>
+  <!-- CONTENT -->
+  <div class="container">
+    <p class="intro">
+      Your support strengthens our mission to enhance water, energy, food, and ecosystem resilience across Africa’s drylands.
+      Whether through funding, partnerships, or knowledge sharing, your contribution drives real change in communities facing climate and environmental challenges.
+    </p>
 
-    <section class="support-option">
-      <h2>2. Partner With Us</h2>
-      <p>
-        We collaborate with universities, governments, NGOs, and international organizations to deliver high-impact research and solutions. 
-        Partnerships enable us to co-design projects and scale innovations for long-term resilience.
-      </p>
-    </section>
-
-    <section class="support-option">
-      <h2>3. Share Data and Knowledge</h2>
-      <p>
-        Open data and shared expertise are key to advancing our mission. 
-        If you hold relevant datasets, tools, or indigenous knowledge, partnering with ADNRC ensures they contribute to science and practice across drylands.
-      </p>
-    </section>
-
-    <section class="support-option">
-      <h2>4. Volunteer and Contribute Skills</h2>
-      <p>
-        Join us as a research intern, field volunteer, or technical advisor. 
-        Your time and expertise directly contribute to projects in water management, renewable energy, agriculture, and ecosystem restoration.
-      </p>
-    </section>
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>1. Fund Our Research</h3>
+        <p>Financial contributions directly support field research, data platforms, and community-driven projects tackling drought, food insecurity, and sustainable energy.</p>
+      </div>
+      <div class="support-card">
+        <h3>2. Partner With Us</h3>
+        <p>We collaborate with universities, governments, NGOs, and international organizations to co-design and scale innovative solutions for long-term resilience.</p>
+      </div>
+      <div class="support-card">
+        <h3>3. Share Data & Knowledge</h3>
+        <p>Open data and shared expertise are key to advancing our mission. Contribute datasets, tools, or indigenous knowledge to enrich dryland science and practice.</p>
+      </div>
+      <div class="support-card">
+        <h3>4. Volunteer Your Skills</h3>
+        <p>Join us as a research intern, field volunteer, or technical advisor. Your time and expertise directly strengthen our water, energy, agriculture, and ecosystem projects.</p>
+      </div>
+    </div>
 
     <section>
       <h2>Get in Touch</h2>
       <p>
-        To explore how you can support ADNRC, please <a href="mailto:contact@adnrc.org">email us</a> or reach out via our contact form. 
+        To explore how you can support ADNRC, please <a href="mailto:info@adnrc.com">email us</a> or visit our <a href="support.html">contact page</a>.
         Together, we can build a more resilient future for Africa’s drylands.
       </p>
     </section>
-  </main>
+  </div>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-left">
-      <img src="assets/ADNRC_logo.png" alt="ADNRC Logo">
+    <div class="footer-container">
+      <div class="footer-col footer-brand">
+        <div class="brand-top">
+          <img src="assets/footerlogo.png" alt="ADNRC Logo" class="footer-logo" />
+          <div class="brand-text">
+            <h3 class="org-name">African Drylands Nexus Research Center</h3>
+            <p class="tagline">Advancing WEFE Nexus Research Across Africa’s Drylands</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="data.html">Data</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@adnrc.com">info@adnrc.com</a></li>
+          <li><a href="tel:+254710953283">+254 710 953 283</a></li>
+          <li>P.O. BOX 62000, Isiolo, Kenya</li>
+        </ul>
+        <div class="social">
+          <a href="#">in</a><a href="#">X</a><a href="#">f</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay Updated</h4>
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
     </div>
-    <div class="footer-center">
-      <a href="#">Privacy notice</a>
-      <a href="#">Customer service</a>
-      <a href="#">Terms of use</a>
-      <a href="support.html">Contact</a>
-      <a href="#">Accessibility</a>
-    </div>
-    <div class="footer-right">
-      <a href="tel:+254700000000">☎</a>
-      <a href="mailto:contact@adnrc.org">✉</a>
-      <a href="#">in</a>
-      <a href="#">X</a>
-      <a href="#">🦋</a>
-      <a href="#">f</a>
-      <a href="#">▶</a>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 African Drylands Nexus Research Center. All Rights Reserved.</p>
     </div>
   </footer>
 
 </body>
 </html>
+
 
