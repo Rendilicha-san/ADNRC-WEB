@@ -10,42 +10,179 @@
   <meta name="author" content="African Drylands Nexus Research Center">
 
   <link rel="icon" href="assets/Logo.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    body {
-      font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      color: #111;
+    /* ===== BASE STYLES ===== */
+    :root {
+      --primary-color: #2c5530;
+      --secondary-color: #d4a574;
+      --accent-color: #3498db;
+      --dark-bg: #1e2a38;
+      --light-bg: #f9f7f2;
+      --text-dark: #2c3e50;
+      --text-light: #5d6d7e;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
     }
 
-    /* ===== HEADER ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      display: inline-block;
+    }
+
+    .section-title h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+    }
+
+    .btn-secondary:hover {
+      background: #c18f52;
+      box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== HEADER IMPROVEMENTS ===== */
     .topbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 15px 30px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+
+    .topbar.scrolled {
+      padding: 10px 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
     }
 
     .brand img {
-      max-height: 65px;
+      height: 60px;
+      width: auto;
     }
 
-    .brand span {
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
       font-size: 1.4rem;
-      font-weight: 600;
-      color: #222;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .brand-tagline {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 2px;
     }
 
     .nav-wrapper {
@@ -56,31 +193,66 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 25px;
     }
 
     .nav-links a {
-      color: #32373c;
-      text-decoration: none;
-      font-weight: 500;
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 5px 0;
+      position: relative;
+      transition: var(--transition);
     }
 
-    .nav-links a:hover {
-      color: #3498db;
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-color);
     }
 
-    .search-form input {
-      padding: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: var(--transition);
     }
 
-    .search-form input[type="submit"] {
-      background: #3498db;
-      color: #fff;
+    .nav-links a:hover:after, .nav-links a.active:after {
+      width: 100%;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      transition: var(--transition);
+      width: 200px;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .search-btn {
+      padding: 8px 15px;
+      background: var(--accent-color);
+      color: white;
       border: none;
+      border-radius: 0 4px 4px 0;
       cursor: pointer;
-      margin-top: 4px;
+      transition: var(--transition);
+    }
+
+    .search-btn:hover {
+      background: #2980b9;
     }
 
     .nav-toggle {
@@ -89,341 +261,812 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: var(--primary-color);
     }
 
-    @media (max-width: 850px) {
-      .brand span { display: none; }
-      .nav-wrapper {
-        display: none;
-        flex-direction: column;
-        background: #f8f9fa;
-        width: 100%;
-        padding: 20px;
-      }
-      .nav-wrapper.show { display: flex; }
-      .nav-toggle { display: block; }
-    }
-
-    /* ===== HERO ===== */
+    /* ===== ENHANCED HERO SECTION ===== */
     .hero {
       position: relative;
-      height: 85vh;
-      color: #fff;
-      text-align: center;
+      height: 90vh;
+      min-height: 700px;
+      color: white;
       overflow: hidden;
+      margin-top: 90px;
+    }
+
+    .slider-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
 
     .slide {
       position: absolute;
-      inset: 0;
+      width: 100%;
+      height: 100%;
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
     }
 
-    .slide.active { opacity: 1; }
+    .slide.active {
+      opacity: 1;
+    }
 
-    .hero::after {
-      content: "";
+    .slide-overlay {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
 
     .hero-content {
-      position: relative;
+      position: absolute;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
       max-width: 900px;
-      margin: auto;
       padding: 0 20px;
       z-index: 2;
     }
 
     .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      font-size: 2rem;
-      color: #fff;
-      background: rgba(0,0,0,0.3);
-      padding: 6px 12px;
-      cursor: pointer;
-      z-index: 2;
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .arrow.left { left: 20px; }
-    .arrow.right { right: 20px; }
-
-    .dots {
+    .slider-controls {
       position: absolute;
-      bottom: 20px;
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
-      z-index: 2;
+      align-items: center;
+      gap: 20px;
+      z-index: 3;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      opacity: 0.7;
+    }
+
+    .arrow:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .dots {
+      display: flex;
+      gap: 12px;
     }
 
     .dot {
       width: 12px;
       height: 12px;
-      background: #fff;
-      opacity: 0.5;
+      background: white;
       border-radius: 50%;
       cursor: pointer;
+      opacity: 0.5;
+      transition: var(--transition);
     }
 
-    .dot.active { opacity: 1; }
-
-    /* ===== MAIN SECTIONS ===== */
-    .section {
-      padding: 80px 20px;
+    .dot.active, .dot:hover {
+      opacity: 1;
+      transform: scale(1.2);
     }
 
-    .section.alt {
-      background: #f6f8fa;
+    .slide-counter {
+      color: white;
+      font-weight: 600;
+      min-width: 60px;
+      text-align: center;
     }
 
-    .section-inner {
-      max-width: 1200px;
-      margin: auto;
+    /* ===== IMPROVED MAIN SECTIONS ===== */
+    .about-section {
+      background: var(--light-bg);
     }
 
-    .section h2 {
-      font-size: 2.1rem;
-      margin-bottom: 20px;
-      color: #1e2a38;
-    }
-
-    .section p.lead {
-      font-size: 1.1rem;
-      max-width: 850px;
-      margin-bottom: 40px;
-    }
-
-    .grid {
+    .about-content {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ===== THEMES SECTION ===== */
+    .themes-section {
+      background: white;
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
     }
 
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    .theme-card {
+      text-align: center;
+      padding: 40px 25px;
     }
 
-    /* ===== CTA ===== */
-    .cta {
-      background: linear-gradient(135deg, #1e2a38, #2c3e50);
-      color: #fff;
+    .theme-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+
+    .theme-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    /* ===== REGIONS SECTION ===== */
+    .regions-section {
+      background: var(--light-bg);
+    }
+
+    .regions-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .region-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 300px;
+    }
+
+    .region-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+
+    .region-card:hover .region-image {
+      transform: scale(1.1);
+    }
+
+    .region-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 25px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+    }
+
+    .region-overlay h3 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    /* ===== DATA & TOOLS SECTION ===== */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .data-card {
       text-align: center;
     }
 
-    .cta h2 { color: #fff; }
-
-    .cta a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
-      background: #3498db;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: 600;
+    .data-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 20px;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== LATEST RESEARCH SECTION ===== */
+    .research-section {
+      background: var(--light-bg);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .research-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .research-date {
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .research-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .research-link {
+      margin-top: auto;
+      color: var(--accent-color);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .research-link i {
+      transition: var(--transition);
+    }
+
+    .research-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), #1a472a);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: white;
+    }
+
+    .cta-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== IMPROVED FOOTER ===== */
     footer {
-      background: #1e2a38;
+      background: var(--dark-bg);
       color: #ddd;
-      padding: 60px 20px 30px;
+      padding: 70px 0 30px;
     }
 
     .footer-container {
-      max-width: 1200px;
-      margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo img {
+      height: 70px;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo p {
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+
+    .footer-links h3, .footer-contact h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--secondary-color);
+      padding-left: 5px;
+    }
+
+    .footer-contact p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-contact i {
+      color: var(--secondary-color);
+      width: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
     }
 
     .footer-bottom {
-      border-top: 1px solid #444;
-      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 20px;
       text-align: center;
       font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrapper {
+        position: fixed;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+      
+      .nav-wrapper.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .search-form {
+        width: 100%;
+      }
+      
+      .search-input {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .hero-btns, .cta-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease forwards;
     }
   </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<div class="topbar">
-  <div class="brand">
-    <img src="assets/Logo.png" alt="ADNRC Logo">
-    <span>African Drylands Nexus Research Center</span>
-  </div>
-
-  <button class="nav-toggle">☰</button>
-
-  <div class="nav-wrapper">
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="research.html">Research</a>
-      <a href="data.html">Data</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="publications.html">Publications</a>
-      <a href="support.html">Support</a>
+  <!-- HEADER -->
+  <div class="topbar" id="topbar">
+    <div class="brand">
+      <img src="assets/Logo.png" alt="ADNRC Logo">
+      <div class="brand-text">
+        <div class="brand-name">African Drylands Nexus Research Center</div>
+        <div class="brand-tagline">Integrated WEFE Nexus Research</div>
+      </div>
     </div>
-    <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
-      <input type="hidden" name="as_sitesearch" value="adnrc.com">
-      <input type="text" name="q" placeholder="Search ADNRC">
-      <input type="submit" value="Search">
-    </form>
-  </div>
-</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="slide active" style="background-image:url('assets/ASALs1.jpg')"></div>
-  <div class="slide" style="background-image:url('assets/ASALs2.jpg')"></div>
+    <button class="nav-toggle" id="navToggle">
+      <i class="fas fa-bars"></i>
+    </button>
 
-  <div class="hero-content">
-    <h1>Integrated Nexus Research for Africa’s Drylands</h1>
-    <p>
-      Advancing water, energy, food, and ecosystem science to support resilient livelihoods and sustainable development.
-    </p>
-  </div>
-
-  <div class="arrow left">&#10094;</div>
-  <div class="arrow right">&#10095;</div>
-  <div class="dots"></div>
-</section>
-
-<!-- ABOUT -->
-<section class="section">
-  <div class="section-inner">
-    <h2>Who We Are</h2>
-    <p class="lead">
-      The African Drylands Nexus Research Center (ADNRC) is a Kenya-based research NGO focused on interdisciplinary research in Africa’s arid and semi-arid regions.
-    </p>
-    <p>
-      We generate applied knowledge, data, and decision-support tools that address persistent challenges of water scarcity, climate variability, ecosystem degradation, and livelihood vulnerability across dryland socio-ecological systems.
-    </p>
-  </div>
-</section>
-
-<!-- THEMES -->
-<section class="section alt">
-  <div class="section-inner">
-    <h2>Core Research Themes</h2>
-    <div class="grid">
-      <div class="card"><h3>Water Security</h3><p>Sustainable assessment and management of surface and groundwater resources in dryland and arid environments.</p></div>
-	  <div class="card"><h3>Food Systems & Livelihoods</h3><p>Research on renewable energy deployment, system performance, and integration for policy and planning.</p></div>
-	  <div class="card"><h3>Sustainable Energy Systems</h3><p>Research on renewable energy deployment, system performance, and integration for policy and planning.</p></div>
-      <div class="card"><h3>Ecosystems & Biodiversity</h3><p>Study of dryland ecosystem dynamics, degradation processes, and restoration pathways.</p></div>
-	  <div class="card"><h3>Climate Variability & Change</h3><p>Climate risk analysis, drought assessment, and adaptation planning in dryland regions.</p></div>
-      
+    <div class="nav-wrapper" id="navWrapper">
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="research.html">Research</a>
+        <a href="data.html">Data</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="publications.html">Publications</a>
+        <a href="support.html">Support</a>
+      </div>
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+        <input type="hidden" name="as_sitesearch" value="adnrc.com">
+        <input type="text" name="q" class="search-input" placeholder="Search ADNRC...">
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+      </form>
     </div>
   </div>
-</section>
 
-<!-- REGIONS -->
-<section class="section">
-  <div class="section-inner">
-    <h2>Focus Regions</h2>
-    <div class="grid">
-      <div class="card"><h3>Northern Kenya</h3><p>Applied research and pilot initiatives on the Water–Food–Energy–Ecosystems nexus in arid and semi-arid landscapes.</p></div>
-      <div class="card"><h3>African Drylands</h3><p>Comparative and transboundary research on dryland systems, shared natural resources, and climate resilience.</p></div>
+  <!-- ENHANCED HERO SECTION -->
+  <section class="hero">
+    <div class="slider-container">
+      <div class="slide active" style="background-image:url('assets/ASALs1.jpg')">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide" style="background-image:url('assets/ASALs2.jpg')">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')">
+        <div class="slide-overlay"></div>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- DATA -->
-<section class="section alt">
-  <div class="section-inner">
-    <h2>Data, Models, and Tools</h2>
-    <div class="grid">
-      <div class="card"><h3>Environmental Data</h3><p>Climate, hydrology, and land systems datasets.</p></div>
-      <div class="card"><h3>Integrated Models</h3><p>Process-based and system-level nexus models.</p></div>
-      <div class="card"><h3>Decision Support</h3><p>Tools for planning, policy, and scenario analysis.</p></div>
+    <div class="hero-content animate-fadeInUp">
+      <h1>Integrated Nexus Research for Africa's Drylands</h1>
+      <p>Advancing water, energy, food, and ecosystem science to support resilient livelihoods and sustainable development across Africa's arid and semi-arid regions.</p>
+      <div class="hero-btns">
+        <a href="research.html" class="btn">Explore Our Research</a>
+        <a href="aboutus.html" class="btn btn-secondary">Learn About Us</a>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- CTA -->
-<section class="section cta">
-  <div class="section-inner">
-    <h2>Engage With Our Work</h2>
-    <p class="lead">
-      Explore our research, access data, or partner with us to advance sustainable dryland development.
-    </p>
-    <a href="research.html">Explore Research</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-container">
-    <div>
-      <h3>African Drylands Nexus Research Center</h3>
-      <p>Advancing integrated WEFE nexus research across Africa’s drylands.</p>
+    <div class="slider-controls">
+      <div class="arrow left" id="prevSlide"><i class="fas fa-chevron-left"></i></div>
+      <div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">3</span></div>
+      <div class="dots" id="sliderDots"></div>
+      <div class="arrow right" id="nextSlide"><i class="fas fa-chevron-right"></i></div>
     </div>
-    <div>
-      <p>Email: info@adnrc.com</p>
-      <p>Phone: +254 710 953 283</p>
-      <p>P.O. Box 62000, Isiolo, Kenya</p>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <p>The African Drylands Nexus Research Center (ADNRC) is a Kenya-based research NGO dedicated to interdisciplinary research in Africa's arid and semi-arid regions.</p>
+          <p>We generate applied knowledge, data, and decision-support tools that address persistent challenges of water scarcity, climate variability, ecosystem degradation, and livelihood vulnerability across dryland socio-ecological systems.</p>
+          <p>Our work bridges science, policy, and practice to support sustainable development and climate resilience in some of the world's most vulnerable ecosystems.</p>
+          <a href="aboutus.html" class="btn">Our Mission & Vision</a>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="African Drylands Research">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    © 2025 African Drylands Nexus Research Center
-  </div>
-</footer>
+  </section>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav-wrapper');
-  toggle.onclick = () => nav.classList.toggle('show');
+  <!-- THEMES SECTION -->
+  <section class="section themes-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Core Research Themes</h2>
+      </div>
+      <div class="section-subtitle">
+        Our interdisciplinary research focuses on the interconnected challenges facing Africa's drylands through the Water-Energy-Food-Ecosystems (WEFE) nexus approach.
+      </div>
+      <div class="themes-grid">
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <h3>Water Security</h3>
+          <p>Sustainable assessment and management of surface and groundwater resources in dryland and arid environments.</p>
+        </div>
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>Food Systems & Livelihoods</h3>
+          <p>Enhancing agricultural productivity, food security, and sustainable livelihoods in vulnerable dryland communities.</p>
+        </div>
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-solar-panel"></i>
+          </div>
+          <h3>Sustainable Energy Systems</h3>
+          <p>Research on renewable energy deployment, system performance, and integration for policy and planning.</p>
+        </div>
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-tree"></i>
+          </div>
+          <h3>Ecosystems & Biodiversity</h3>
+          <p>Study of dryland ecosystem dynamics, degradation processes, and restoration pathways.</p>
+        </div>
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-cloud-sun"></i>
+          </div>
+          <h3>Climate Variability & Change</h3>
+          <p>Climate risk analysis, drought assessment, and adaptation planning in dryland regions.</p>
+        </div>
+        <div class="card theme-card">
+          <div class="theme-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>Nexus Integration</h3>
+          <p>Integrated modeling and analysis of WEFE nexus interactions for sustainable development planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  const slides = document.querySelectorAll('.slide');
-  const dotsContainer = document.querySelector('.dots');
-  let current = 0;
+  <!-- REGIONS SECTION -->
+  <section class="section regions-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Focus Regions</h2>
+      </div>
+      <div class="section-subtitle">
+        Our work spans across Africa's drylands, with focused research in key regions facing unique challenges and opportunities.
+      </div>
+      <div class="regions-container">
+        <div class="region-card card">
+          <div class="region-image" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="region-overlay">
+            <h3>Northern Kenya</h3>
+            <p>Applied research and pilot initiatives on the Water-Food-Energy-Ecosystems nexus in arid and semi-arid landscapes.</p>
+          </div>
+        </div>
+        <div class="region-card card">
+          <div class="region-image" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="region-overlay">
+            <h3>Horn of Africa</h3>
+            <p>Transboundary water management, drought resilience, and climate adaptation in cross-border dryland systems.</p>
+          </div>
+        </div>
+        <div class="region-card card">
+          <div class="region-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+          <div class="region-overlay">
+            <h3>Sahel Region</h3>
+            <p>Comparative research on dryland systems, shared natural resources, and climate resilience across the Sahel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  slides.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => show(i);
-    dotsContainer.appendChild(d);
-  });
+  <!-- DATA & TOOLS SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Data, Models, and Tools</h2>
+      </div>
+      <div class="section-subtitle">
+        We develop and provide open-access resources to support research, planning, and decision-making for sustainable dryland management.
+      </div>
+      <div class="data-grid">
+        <div class="card data-card">
+          <div class="data-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Environmental Data</h3>
+          <p>Climate, hydrology, land use, and ecosystem datasets for Africa's drylands.</p>
+          <a href="data.html" class="btn" style="margin-top: 20px;">Access Data</a>
+        </div>
+        <div class="card data-card">
+          <div class="data-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Integrated Models</h3>
+          <p>Process-based and system-level nexus models for scenario analysis and planning.</p>
+          <a href="solutions.html" class="btn" style="margin-top: 20px;">Explore Models</a>
+        </div>
+        <div class="card data-card">
+          <div class="data-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Decision Support Tools</h3>
+          <p>Interactive tools for planning, policy analysis, and sustainable development.</p>
+          <a href="solutions.html" class="btn" style="margin-top: 20px;">Use Tools</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  const dots = document.querySelectorAll('.dot');
+  <!-- LATEST RESEARCH SECTION -->
+  <section class="section research-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest Research & Publications</h2>
+      </div>
+      <div class="section-subtitle">
+        Stay updated with our most recent research findings, publications, and project outcomes.
+      </div>
+      <div class="research-grid">
+        <div class="card research-card">
+          <div class="research-date">March 2025</div>
+          <h3>Groundwater Recharge Patterns in Arid Lands</h3>
+          <p>New study reveals seasonal variability in groundwater recharge across Northern Kenya's drylands, with implications for water management.</p>
+          <a href="publications.html" class="research-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="card research-card">
+          <div class="research-date">February 2025</div>
+          <h3>Solar-Powered Irrigation for Smallholder Farmers</h3>
+          <p>Field assessment of solar irrigation systems in Isiolo County shows potential for improving food security while conserving water.</p>
+          <a href="publications.html" class="research-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="card research-card">
+          <div class="research-date">January 2025</div>
+          <h3>WEFE Nexus Assessment Tool</h3>
+          <p>Launch of our new integrated assessment tool for evaluating water-energy-food-ecosystem interactions in dryland planning.</p>
+          <a href="solutions.html" class="research-link">Explore Tool <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="publications.html" class="btn">View All Publications</a>
+      </div>
+    </div>
+  </section>
 
-  function show(i) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = i;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
+  <!-- CTA SECTION -->
+  <section class="section cta-section">
+    <div class="container">
+      <h2>Engage With Our Work</h2>
+      <p>Explore our research, access data and tools, collaborate on projects, or partner with us to advance sustainable dryland development across Africa.</p>
+      <div class="cta-btns">
+        <a href="research.html" class="btn">Explore Research</a>
+        <a href="support.html" class="btn btn-secondary">Partner With Us</a>
+        <a href="data.html" class="btn">Access Data</a>
+      </div>
+    </div>
+  </section>
 
-  setInterval(() => show((current + 1) % slides.length), 6000);
-</script>
-
-</body>
-</html>
-
+  <!-- IMPROVED FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="assets/Logo.png" alt="ADNRC Logo">
+          <h3>African Drylands Nexus Research Center</h3>
+          <p>Advancing integrated WEFE nexus research across Africa's drylands to support sustainable development and climate resilience.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="research.html">Research Themes</a></li>
+            <li><a href="data.html">Data & Tools</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="support.html">Support Our Work</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+         
