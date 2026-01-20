@@ -135,101 +135,143 @@
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
 
-    /* ===== BLOCK STYLE HEADER ===== */
-    .topbar {
+    /* ===== HEADER LIKE THE IMAGE ===== */
+    .header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 30px;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
       transition: var(--transition);
     }
 
-    .topbar.scrolled {
-      padding: 10px 30px;
+    .header.scrolled {
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .brand {
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 15px;
+      justify-content: space-between;
+      padding: 15px 30px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .brand img {
-      height: 60px;
+    .brand-compact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-compact img {
+      height: 45px;
       width: auto;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* BLOCK STYLE TITLE */
-    .brand-name-block {
+    .brand-text-compact {
       display: flex;
       flex-direction: column;
       text-align: left;
-      line-height: 1.1;
-      letter-spacing: 0.5px;
+    }
+
+    .brand-abbreviation {
+      font-size: 1.8rem;
       font-weight: 800;
-      text-transform: uppercase;
-    }
-    
-    .brand-line-1 {
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
       color: var(--primary-color);
-    }
-    
-    .brand-line-2 {
-      font-size: 1.2rem;
-      letter-spacing: 0.8px;
-      color: var(--secondary-color);
+      line-height: 1;
+      letter-spacing: 1px;
     }
 
-    .brand-tagline {
-      font-size: 0.85rem;
+    .brand-fullname {
+      font-size: 0.9rem;
+      font-weight: 600;
       color: var(--text-light);
+      line-height: 1.2;
       margin-top: 2px;
-      font-weight: 500;
-      text-transform: none;
-      letter-spacing: 0.3px;
+      max-width: 200px;
     }
 
-    .nav-wrapper {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
     }
 
-    .nav-links {
+    .search-form-compact {
       display: flex;
-      gap: 25px;
+      align-items: center;
     }
 
-    .nav-links a {
+    .search-input-compact {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      transition: var(--transition);
+      width: 200px;
+      font-size: 0.9rem;
+    }
+
+    .search-input-compact:focus {
+      border-color: var(--accent-color);
+    }
+
+    .search-btn-compact {
+      padding: 8px 15px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .search-btn-compact:hover {
+      background: #2980b9;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+
+    /* ===== NAVIGATION BAR ===== */
+    .nav-bar {
+      padding: 0 30px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-links-compact {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+    }
+
+    .nav-links-compact a {
       color: var(--text-dark);
       font-weight: 600;
+      font-size: 0.95rem;
       padding: 5px 0;
       position: relative;
       transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .nav-links a:hover, .nav-links a.active {
+    .nav-links-compact a:hover, .nav-links-compact a.active {
       color: var(--accent-color);
     }
 
-    .nav-links a:after {
+    .nav-links-compact a:after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -240,49 +282,8 @@
       transition: var(--transition);
     }
 
-    .nav-links a:hover:after, .nav-links a.active:after {
+    .nav-links-compact a:hover:after, .nav-links-compact a.active:after {
       width: 100%;
-    }
-
-    .search-form {
-      display: flex;
-      align-items: center;
-    }
-
-    .search-input {
-      padding: 8px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px 0 0 4px;
-      outline: none;
-      transition: var(--transition);
-      width: 200px;
-    }
-
-    .search-input:focus {
-      border-color: var(--accent-color);
-    }
-
-    .search-btn {
-      padding: 8px 15px;
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .search-btn:hover {
-      background: #2980b9;
-    }
-
-    .nav-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--primary-color);
     }
 
     /* ===== ENHANCED HERO SECTION ===== */
@@ -292,7 +293,7 @@
       min-height: 700px;
       color: white;
       overflow: hidden;
-      margin-top: 90px;
+      margin-top: 120px;
     }
 
     .slider-container {
@@ -712,45 +713,54 @@
         order: -1;
       }
       
-      .brand-line-1 {
-        font-size: 1.2rem;
-      }
-      
-      .brand-line-2 {
-        font-size: 1rem;
+      .search-input-compact {
+        width: 150px;
       }
     }
 
     @media (max-width: 768px) {
-      .nav-wrapper {
-        position: fixed;
-        top: 90px;
-        left: 0;
-        width: 100%;
-        background: white;
+      .header-top {
         flex-direction: column;
-        padding: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition);
+        gap: 15px;
+        padding: 15px 20px;
       }
       
-      .nav-wrapper.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+      .brand-compact {
+        width: 100%;
+        justify-content: space-between;
       }
       
-      .nav-links {
-        flex-direction: column;
+      .brand-fullname {
+        max-width: none;
+        text-align: right;
+      }
+      
+      .header-actions {
         width: 100%;
+        justify-content: space-between;
+      }
+      
+      .nav-bar {
+        display: none;
+        padding: 15px 20px;
+      }
+      
+      .nav-bar.active {
+        display: block;
+      }
+      
+      .nav-links-compact {
+        flex-direction: column;
+        gap: 15px;
         text-align: center;
       }
       
       .nav-toggle {
         display: block;
+      }
+      
+      .hero {
+        margin-top: 150px;
       }
       
       .hero h1 {
@@ -765,23 +775,15 @@
         font-size: 2rem;
       }
       
-      .search-form {
-        width: 100%;
+      .search-input-compact {
+        width: 180px;
       }
       
-      .search-input {
-        width: 100%;
+      .brand-abbreviation {
+        font-size: 1.5rem;
       }
       
-      .brand-line-1 {
-        font-size: 1.1rem;
-      }
-      
-      .brand-line-2 {
-        font-size: 0.95rem;
-      }
-      
-      .brand-tagline {
+      .brand-fullname {
         font-size: 0.8rem;
       }
     }
@@ -804,20 +806,36 @@
         padding: 60px 0;
       }
       
-      .brand-line-1 {
-        font-size: 1rem;
+      .search-input-compact {
+        width: 150px;
+        font-size: 0.8rem;
+        padding: 6px 10px;
       }
       
-      .brand-line-2 {
-        font-size: 0.9rem;
+      .search-btn-compact {
+        padding: 6px 10px;
+        font-size: 0.8rem;
       }
       
-      .brand-tagline {
+      .brand-compact img {
+        height: 35px;
+      }
+      
+      .brand-abbreviation {
+        font-size: 1.3rem;
+      }
+      
+      .brand-fullname {
         font-size: 0.75rem;
       }
       
-      .brand img {
-        height: 50px;
+      .header-top {
+        padding: 10px 15px;
+      }
+      
+      .hero {
+        margin-top: 140px;
+        min-height: 600px;
       }
     }
 
@@ -840,25 +858,32 @@
 </head>
 
 <body>
-  <!-- HEADER WITH BLOCK-STYLE TITLE -->
-  <div class="topbar" id="topbar">
-    <div class="brand">
-      <img src="assets/Logo.png" alt="ADNRC Logo">
-      <div class="brand-text">
-        <div class="brand-name-block">
-          <div class="brand-line-1">AFRICAN DRYLANDS</div>
-          <div class="brand-line-2">NEXUS RESEARCH CENTER</div>
+  <!-- HEADER LIKE THE IMAGE -->
+  <header class="header" id="header">
+    <div class="header-top">
+      <div class="brand-compact">
+        <img src="assets/Logo.png" alt="ADNRC Logo">
+        <div class="brand-text-compact">
+          <div class="brand-abbreviation">ADNRC</div>
+          <div class="brand-fullname">African Drylands Nexus Research Center</div>
         </div>
-        <div class="brand-tagline">Integrated WEFE Nexus Research</div>
+      </div>
+      
+      <div class="header-actions">
+        <form class="search-form-compact" action="https://www.google.com/search" method="get" target="_blank">
+          <input type="hidden" name="as_sitesearch" value="adnrc.com">
+          <input type="text" name="q" class="search-input-compact" placeholder="Search ADNRC...">
+          <button type="submit" class="search-btn-compact"><i class="fas fa-search"></i></button>
+        </form>
+        
+        <button class="nav-toggle" id="navToggle">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-
-    <button class="nav-toggle" id="navToggle">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="nav-wrapper" id="navWrapper">
-      <div class="nav-links">
+    
+    <nav class="nav-bar" id="navBar">
+      <div class="nav-links-compact">
         <a href="index.html" class="active">Home</a>
         <a href="aboutus.html">About Us</a>
         <a href="research.html">Research</a>
@@ -867,13 +892,8 @@
         <a href="publications.html">Publications</a>
         <a href="support.html">Support</a>
       </div>
-      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
-        <input type="hidden" name="as_sitesearch" value="adnrc.com">
-        <input type="text" name="q" class="search-input" placeholder="Search ADNRC...">
-        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-  </div>
+    </nav>
+  </header>
 
   <!-- ENHANCED HERO SECTION -->
   <section class="hero">
@@ -1107,11 +1127,102 @@
       <div class="footer-container">
         <div class="footer-logo">
           <img src="assets/Logo.png" alt="ADNRC Logo">
-          <h3>African Drylands Nexus Research Center</h3>
+          <div class="brand-name-block" style="margin-bottom: 15px;">
+            <div class="brand-line-1" style="color: white; font-size: 1.3rem;">AFRICAN DRYLANDS</div>
+            <div class="brand-line-2" style="color: var(--secondary-color); font-size: 1.1rem;">NEXUS RESEARCH CENTER</div>
+          </div>
           <p>Advancing integrated WEFE nexus research across Africa's drylands to support sustainable development and climate resilience.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
-          </div
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="research.html">Research Themes</a></li>
+            <li><a href="data.html">Data & Tools</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="support.html">Support Our Work</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-envelope"></i> info@adnrc.com</p>
+          <p><i class="fas fa-phone"></i> +254 710 953 283</p>
+          <p><i class="fas fa-map-marker-alt"></i> P.O. Box 62000, Isiolo, Kenya</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 African Drylands Nexus Research Center
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navBar = document.getElementById('navBar');
+    navToggle.onclick = () => navBar.classList.toggle('active');
+
+    // Image slider functionality
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('sliderDots');
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const prevSlideBtn = document.getElementById('prevSlide');
+    const nextSlideBtn = document.getElementById('nextSlide');
+    let current = 0;
+
+    // Initialize dots and counter
+    totalSlidesEl.textContent = slides.length;
+    
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => showSlide(i);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(i) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      currentSlideEl.textContent = current + 1;
+    }
+
+    // Navigation buttons
+    prevSlideBtn.onclick = () => {
+      showSlide((current - 1 + slides.length) % slides.length);
+    };
+
+    nextSlideBtn.onclick = () => {
+      showSlide((current + 1) % slides.length);
+    };
+
+    // Auto-advance slides
+    setInterval(() => {
+      showSlide((current + 1) % slides.length);
+    }, 6000);
+  </script>
+
+</body>
+</html>
