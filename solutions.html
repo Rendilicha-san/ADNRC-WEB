@@ -2,156 +2,934 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Solutions – ADNRC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions for Dryland Resilience – ADNRC</title>
+  
+  <meta name="description" content="Discover ADNRC's innovative solutions for dryland resilience - transforming research into practical interventions for water, food, energy, and ecosystem challenges.">
+  <meta name="keywords" content="Dryland Solutions, Climate Resilience, Water Security Solutions, Sustainable Agriculture Africa, Ecosystem Restoration, ADNRC Solutions">
+  <meta name="author" content="African Drylands Nexus Research Center">
+  
   <link rel="icon" href="assets/Logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      color: #222;
+    /* ===== CSS RESET & BASE ===== */
+    :root {
+      --primary-color: #1a5276;
+      --secondary-color: #3498db;
+      --accent-color: #28b463;
+      --dark-bg: #1e2a38;
+      --light-bg: #f8f9fa;
+      --text-dark: #222;
+      --text-light: #555;
+      --white: #fff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
     }
 
-    /* ===== HEADER (Unified) ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Merriweather', 'Times New Roman', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== HEADER - CONSISTENT WITH HOMEPAGE ===== */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: #fff;
+      background: var(--white);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      flex-wrap: wrap;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img { max-height: 65px; width: auto; }
-    .brand span { font-size: 1.4rem; font-weight: 600; color: #222; white-space: nowrap; }
-    .nav-wrapper { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
-    .nav-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-    .nav-links a {
-      color: #32373c; text-decoration: none; font-weight: 500; font-size: 1rem; transition: color 0.3s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: #3498db; }
-    .search-form { display: flex; align-items: center; gap: 6px; }
-    .search-form input[type="text"] {
-      padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; outline: none;
-    }
-    .search-form input[type="submit"] {
-      padding: 6px 12px; border: none; border-radius: 4px; background: #3498db; color: #fff; cursor: pointer;
-    }
-    .nav-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: #32373c; cursor: pointer; }
-    @media (max-width: 850px) {
-      .brand span { display: none; }
-      .nav-wrapper { display: none; width: 100%; flex-direction: column; gap: 20px; background: #f8f9fa; padding: 20px 0; border-top: 1px solid #ddd; }
-      .nav-wrapper.show { display: flex; }
-      .nav-toggle { display: block; }
+      padding: 12px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: var(--transition);
     }
 
-    /* ===== HERO (matches Research/Data style) ===== */
+    .topbar.scrolled {
+      padding: 8px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      max-height: 55px;
+      transition: var(--transition);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 2px;
+    }
+
+    .brand-tagline {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary-color);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 5px;
+    }
+
+    .search-form input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      width: 180px;
+      transition: var(--transition);
+    }
+
+    .search-form input[type="text"]:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      width: 220px;
+    }
+
+    .search-form input[type="submit"] {
+      padding: 8px 16px;
+      background: var(--secondary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .search-form input[type="submit"]:hover {
+      background: var(--primary-color);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    /* ===== PAGE HERO ===== */
     .page-hero {
       position: relative;
-      background: url('assets/solutions-hero.jpg') center/cover no-repeat;
-      height: 320px;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; color: #fff;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('assets/solutions-hero.jpg') center/cover no-repeat;
+      height: 60vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 40px;
     }
-    .page-hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 20px; }
-    .page-hero h1 { font-size: 2.7rem; margin: 0 0 8px; }
-    .page-hero p { font-size: 1.15rem; margin: 0; opacity: 0.95; }
 
-    /* ===== CONTENT ===== */
-    .content-container { max-width: 1100px; margin: 60px auto; padding: 0 30px; }
-    .section-block { margin-bottom: 60px; }
-    .section-block h2 {
-      color: #2c3e50; font-size: 2rem; border-left: 4px solid #3498db; padding-left: 12px; margin-bottom: 20px;
+    .hero-content {
+      max-width: 900px;
+      padding: 0 20px;
     }
-    .lead { font-size: 1.05rem; color: #444; text-align: justify; }
 
-    .card-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
-    .card {
-      background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 22px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-    .card h3 { margin-top: 0; color: #2c3e50; }
-    .card p { color: #555; text-align: justify; }
 
-    /* ===== FOOTER (Unified) ===== */
+    .page-hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* ===== SOLUTIONS NAV STRIP ===== */
+    .solutions-nav {
+      background: var(--light-bg);
+      padding: 15px 0;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 70px;
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      background-color: rgba(248, 249, 250, 0.95);
+    }
+
+    .solutions-nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .solutions-nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .solutions-nav a:hover {
+      color: var(--primary-color);
+      background: rgba(52, 152, 219, 0.1);
+    }
+
+    .solutions-nav a.active-nav {
+      color: var(--secondary-color);
+      background: rgba(52, 152, 219, 0.1);
+    }
+
+    .solutions-nav a.active-nav::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-alt {
+      background-color: var(--light-bg);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .lead-text {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: var(--text-light);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* ===== SOLUTIONS INTRO ===== */
+    .solutions-intro {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .solutions-intro p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    /* ===== SOLUTIONS APPROACH ===== */
+    .approach-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      counter-reset: step-counter;
+      margin-top: 40px;
+    }
+
+    .approach-step {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .approach-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .approach-step::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 40px;
+      height: 40px;
+      background: var(--secondary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .approach-step h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .approach-step p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ===== SOLUTION AREAS ===== */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .solution-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid transparent;
+      height: 100%;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .solution-card:nth-child(1) { border-top-color: #3498db; }
+    .solution-card:nth-child(2) { border-top-color: #28b463; }
+    .solution-card:nth-child(3) { border-top-color: #f39c12; }
+    .solution-card:nth-child(4) { border-top-color: #8e44ad; }
+    .solution-card:nth-child(5) { border-top-color: #e74c3c; }
+    .solution-card:nth-child(6) { border-top-color: #1abc9c; }
+
+    .solution-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .solution-content {
+      padding: 30px;
+    }
+
+    .solution-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .solution-content p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .solution-features {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .solution-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .solution-features li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-icon {
+      color: var(--accent-color);
+      font-size: 1.1rem;
+    }
+
+    /* ===== CASE STUDIES ===== */
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .case-study {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .case-study:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .case-study-image {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .case-study-content {
+      padding: 25px;
+    }
+
+    .case-study-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .case-study-content p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+
+    .case-study-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    /* ===== PARTNERSHIPS ===== */
+    .partners-section {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .partners-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .partner-logo {
+      height: 80px;
+      width: auto;
+      opacity: 0.7;
+      transition: var(--transition);
+      filter: grayscale(100%);
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    /* ===== IMPACT METRICS ===== */
+    .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0 60px;
+    }
+
+    .metric-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .metric-label {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/pattern.png');
+      opacity: 0.1;
+    }
+
+    .cta-section .section-header h2 {
+      color: var(--white);
+    }
+
+    .cta-section .lead-text {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--accent-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: #239954;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--white);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--white);
+      color: var(--primary-color);
+    }
+
+    /* ===== FOOTER - CONSISTENT WITH HOMEPAGE ===== */
     footer {
-      background: linear-gradient(135deg, #1e2a38, #2c3e50);
-      color: #f0f0f0;
-      padding: 70px 20px 30px;
-      border-top: 4px solid #3498db;
-      margin-top: 60px;
+      background-color: var(--dark-bg);
+      color: #ddd;
+      padding-top: 60px;
     }
+
     .footer-container {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 50px;
-      max-width: 1200px; margin: 0 auto; align-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
     }
-    .footer-logo {
-      width: 90px; height: 90px; object-fit: contain; border-radius: 6px; background: #fff; padding: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .brand-top { display: flex; align-items: center; gap: 18px; margin-bottom: 15px; }
-    .brand-text { display: flex; flex-direction: column; }
-    .org-name { font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
-    .tagline { color: #ccc; font-size: 0.95rem; line-height: 1.4; margin: 0; max-width: 300px; }
 
-    .footer-col h4 { margin-bottom: 18px; font-size: 1.1rem; position: relative; padding-bottom: 6px; }
-    .footer-col h4::after { content: ""; position: absolute; width: 50px; height: 2px; background: #3498db; bottom: 0; left: 0; }
-    .footer-col ul { list-style: none; padding: 0; margin: 0; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a {
-      color: #ddd; text-decoration: none; display: inline-block; transition: color 0.3s, padding-left 0.3s;
+    .footer-logo img {
+      max-height: 70px;
+      margin-bottom: 15px;
     }
-    .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
 
-    .social { margin-top: 15px; }
-    .social a {
-      display: inline-block; width: 38px; height: 38px; background: #3498db; color: #fff;
-      text-align: center; line-height: 38px; border-radius: 50%; margin-right: 10px; text-decoration: none; font-weight: bold;
-      font-size: 1.1rem; transition: transform 0.3s, background 0.3s;
+    .footer-logo h3 {
+      color: var(--white);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
     }
-    .social a:hover { background: #217dbb; transform: translateY(-3px); }
 
-    .newsletter { display: flex; flex-direction: column; gap: 10px; }
-    .newsletter input { padding: 12px; border: none; border-radius: 4px; font-size: 0.95rem; }
-    .newsletter button {
-      background: #3498db; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; transition: background 0.3s; font-size: 1rem;
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
     }
-    .newsletter button:hover { background: #217dbb; }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #bbb;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      padding-left: 5px;
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .contact-icon {
+      width: 20px;
+      text-align: center;
+      color: var(--secondary-color);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+    }
 
     .footer-bottom {
-      border-top: 1px solid #445a6f; text-align: center; margin-top: 60px; padding-top: 20px; font-size: 0.9rem; color: #bbb;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
     }
-    @media (max-width: 900px) { .footer-container { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) {
-      .footer-container { grid-template-columns: 1fr; text-align: center; }
-      .brand-top { flex-direction: column; }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+      .page-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .page-hero p {
+        font-size: 1.2rem;
+      }
+      
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+      
+      .solutions-nav-container {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 10px 20px;
+      }
+      
+      .nav-wrapper {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+      }
+      
+      .nav-wrapper.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+      
+      .search-form {
+        width: 100%;
+      }
+      
+      .search-form input[type="text"] {
+        width: 100%;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .page-hero {
+        height: 50vh;
+        min-height: 350px;
+        margin-bottom: 30px;
+      }
+      
+      .page-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .page-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .solutions-nav {
+        top: 60px;
+        padding: 10px 0;
+      }
+      
+      .solutions-nav-container {
+        gap: 15px;
+      }
+      
+      .solutions-nav a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-button {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .partners-logos {
+        gap: 20px;
+      }
+      
+      .partner-logo {
+        height: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .brand-name {
+        font-size: 1.2rem;
+      }
+      
+      .brand-tagline {
+        font-size: 0.7rem;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .solution-card, .case-study, .metric-card {
+        padding: 20px;
+      }
+      
+      .solutions-intro {
+        padding: 20px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
-  <div class="topbar">
-    <div class="brand">
-      <img src="assets/Logo.png" alt="ADNRC Logo" />
-      <span>African Drylands Nexus Research Center</span>
-    </div>
-    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-    <div class="nav-wrapper">
-      <div class="nav-links">
+  <header class="topbar" id="header">
+    <a href="index.html" class="brand">
+      <img src="assets/Logo.png" alt="ADNRC Logo">
+      <div class="brand-text">
+        <div class="brand-name">African Drylands Nexus Research Center</div>
+        <div class="brand-tagline">Water • Energy • Food • Ecosystems</div>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <div class="nav-wrapper" id="navWrapper">
+      <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="aboutus.html">About Us</a>
         <a href="research.html">Research</a>
@@ -159,104 +937,468 @@
         <a href="solutions.html" class="active">Solutions</a>
         <a href="publications.html">Publications</a>
         <a href="support.html">Support</a>
-      </div>
-      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" role="search" aria-label="Search ADNRC">
-        <input type="hidden" name="as_sitesearch" value="adnrc.com" />
-        <input type="text" name="q" placeholder="Search ADNRC…" aria-label="Search ADNRC" />
-        <input type="submit" value="Search" />
+      </nav>
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+        <input type="hidden" name="as_sitesearch" value="adnrc.com">
+        <input type="text" name="q" placeholder="Search ADNRC..." aria-label="Search">
+        <input type="submit" value="Search">
       </form>
     </div>
-  </div>
+  </header>
 
   <!-- HERO -->
   <section class="page-hero">
     <div class="hero-content">
       <h1>Solutions for Dryland Resilience</h1>
-      <p>We translate science into scalable, field-ready interventions across water, food, energy, and ecosystems.</p>
+      <p>Translating science into scalable, field-ready interventions across water, food, energy, and ecosystems</p>
     </div>
   </section>
 
-  <!-- CONTENT -->
-  <div class="content-container">
-    <div class="section-block">
-      <h2>Our Solutions Approach</h2>
-      <p class="lead">We blend rigorous science, open data, and participatory design. We prioritize scalable, low-regret interventions that reduce vulnerability today while strengthening long-term sustainability.</p>
-    </div>
-
-    <div class="section-block">
-      <h2>Key Solution Areas</h2>
-      <div class="card-grid">
-        <div class="card"><h3>Water Security</h3><p>Groundwater monitoring, recharge enhancement, solar-powered water systems, and drought early-warning systems.</p></div>
-        <div class="card"><h3>Sustainable Food Systems</h3><p>Climate-smart cropping, agroforestry, restoration-based grazing, and market-based resilience measures.</p></div>
-        <div class="card"><h3>Energy for Sustainable Water</h3><p>Solar irrigation design, off-grid energy for productive use, and integrated water-energy planning for drylands.</p></div>
-        <div class="card"><h3>Ecosystem Restoration</h3><p>Rangeland restoration, native species re-establishment, carbon sequestration initiatives, and nature-based solutions.</p></div>
-        <div class="card"><h3>Decision Support & Tools</h3><p>Interactive dashboards, mapping tools, WEFE trade-off models, and localized scenario planning for policy and communities.</p></div>
-        <div class="card"><h3>Capacity & Policy</h3><p>Training, co-development of policy briefs, and institutional strengthening to embed resilient practices at scale.</p></div>
-      </div>
-    </div>
-
-    <div class="section-block">
-      <h2>Working Together</h2>
-      <p class="lead">Effective solutions require partnerships. We collaborate with communities, county governments, research institutions, and international agencies to co-design, test, and scale interventions that are equitable and evidence-based.</p>
+  <!-- SOLUTIONS NAVIGATION -->
+  <div class="solutions-nav">
+    <div class="container solutions-nav-container">
+      <a href="#approach" class="active-nav">Our Approach</a>
+      <a href="#solutions">Solution Areas</a>
+      <a href="#impact">Impact & Metrics</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#partners">Partnerships</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col footer-brand">
-        <div class="brand-top">
-          <img src="assets/footerlogo.png" alt="ADNRC Logo" class="footer-logo" />
-          <div class="brand-text">
-            <h3 class="org-name">African Drylands Nexus Research Center</h3>
-            <p class="tagline">Advancing WEFE Nexus Research Across Africa’s Drylands</p>
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <!-- SOLUTIONS APPROACH -->
+    <section id="approach" class="section">
+      <div class="section-header">
+        <h2>Our Solutions Approach</h2>
+        <p class="lead-text">We blend rigorous science, open data, and participatory design to develop scalable, low-regret interventions that reduce vulnerability today while strengthening long-term sustainability.</p>
+      </div>
+      
+      <div class="solutions-intro">
+        <p>At ADNRC, we believe that effective solutions emerge from the intersection of scientific evidence, community knowledge, and practical innovation. Our approach ensures that interventions are not only scientifically sound but also culturally appropriate, economically viable, and environmentally sustainable.</p>
+      </div>
+
+      <div class="approach-steps">
+        <div class="approach-step">
+          <h3>Research & Evidence</h3>
+          <p>Grounding solutions in robust scientific research and data analysis to identify the most effective interventions for specific dryland contexts.</p>
+        </div>
+        
+        <div class="approach-step">
+          <h3>Co-Design & Participation</h3>
+          <p>Engaging communities, governments, and stakeholders throughout the design process to ensure relevance, ownership, and sustainability.</p>
+        </div>
+        
+        <div class="approach-step">
+          <h3>Pilot & Test</h3>
+          <p>Implementing small-scale pilots to test interventions, gather feedback, and refine approaches before scaling up.</p>
+        </div>
+        
+        <div class="approach-step">
+          <h3>Scale & Institutionalize</h3>
+          <p>Developing pathways for scaling successful interventions and integrating them into policies, programs, and institutions.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SOLUTION AREAS -->
+    <section id="solutions" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Key Solution Areas</h2>
+          <p class="lead-text">Explore our comprehensive portfolio of solutions addressing critical challenges at the Water-Energy-Food-Ecosystem (WEFE) nexus in Africa's drylands.</p>
+        </div>
+        
+        <div class="solutions-grid">
+          <!-- WATER SECURITY -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">💧</div>
+              <h3>Water Security Solutions</h3>
+              <p>Innovative approaches to enhance water availability, quality, and access in water-scarce dryland environments.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">📍</span> Groundwater monitoring and management systems</li>
+                <li><span class="feature-icon">🌧️</span> Rainwater harvesting and storage solutions</li>
+                <li><span class="feature-icon">☀️</span> Solar-powered water pumping and treatment</li>
+                <li><span class="feature-icon">🚨</span> Drought early-warning and response systems</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- SUSTAINABLE FOOD SYSTEMS -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">🌾</div>
+              <h3>Sustainable Food Systems</h3>
+              <p>Climate-resilient agricultural practices and value chain innovations to enhance food security and livelihoods.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">🌱</span> Climate-smart cropping and agroforestry</li>
+                <li><span class="feature-icon">🐄</span> Regenerative grazing and rangeland management</li>
+                <li><span class="feature-icon">💼</span> Market-based resilience and value chain development</li>
+                <li><span class="feature-icon">🥗</span> Nutrition-sensitive agriculture interventions</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- ENERGY FOR WATER -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">⚡</div>
+              <h3>Energy for Sustainable Water</h3>
+              <p>Integrated energy-water solutions to power development while minimizing environmental impact.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">☀️</span> Solar irrigation system design and optimization</li>
+                <li><span class="feature-icon">🔋</span> Off-grid energy for productive water use</li>
+                <li><span class="feature-icon">🔄</span> Integrated water-energy planning tools</li>
+                <li><span class="feature-icon">💡</span> Energy-efficient water technologies</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- ECOSYSTEM RESTORATION -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">🌿</div>
+              <h3>Ecosystem Restoration</h3>
+              <p>Nature-based solutions to restore degraded dryland ecosystems and enhance ecosystem services.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">🌳</span> Rangeland and watershed restoration</li>
+                <li><span class="feature-icon">🌺</span> Native species re-establishment</li>
+                <li><span class="feature-icon">🌍</span> Carbon sequestration initiatives</li>
+                <li><span class="feature-icon">🦜</span> Biodiversity conservation measures</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- DECISION SUPPORT -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">📊</div>
+              <h3>Decision Support & Tools</h3>
+              <p>Digital tools and platforms to support evidence-based planning and decision-making.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">🗺️</span> Interactive mapping and monitoring dashboards</li>
+                <li><span class="feature-icon">⚖️</span> WEFE nexus trade-off analysis models</li>
+                <li><span class="feature-icon">🎯</span> Localized scenario planning tools</li>
+                <li><span class="feature-icon">📱</span> Mobile applications for field data collection</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- CAPACITY & POLICY -->
+          <div class="solution-card">
+            <div class="solution-content">
+              <div class="solution-icon">👥</div>
+              <h3>Capacity & Policy Solutions</h3>
+              <p>Strengthening institutions and policies to enable sustainable dryland development.</p>
+              <ul class="solution-features">
+                <li><span class="feature-icon">🎓</span> Training and capacity building programs</li>
+                <li><span class="feature-icon">📄</span> Policy briefs and evidence synthesis</li>
+                <li><span class="feature-icon">🤝</span> Multi-stakeholder dialogue facilitation</li>
+                <li><span class="feature-icon">🏛️</span> Institutional strengthening support</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="aboutus.html">About Us</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="data.html">Data</a></li>
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="support.html">Support</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:info@adnrc.com">info@adnrc.com</a></li>
-          <li><a href="tel:+254710953283">+254 710 953 283</a></li>
-          <li>P.O. BOX 62000, Isiolo, Kenya</li>
-        </ul>
-        <div class="social">
-          <a href="#">in</a><a href="#">X</a><a href="#">f</a>
+    </section>
+    
+    <!-- IMPACT METRICS -->
+    <section id="impact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Impact</h2>
+          <p class="lead-text">Measuring progress and demonstrating tangible outcomes from our solution-oriented work across Africa's drylands.</p>
+        </div>
+        
+        <div class="impact-metrics">
+          <div class="metric-card">
+            <div class="metric-value">15+</div>
+            <div class="metric-label">Solution projects implemented across dryland regions</div>
+          </div>
+          
+          <div class="metric-card">
+            <div class="metric-value">50k+</div>
+            <div class="metric-label">People benefiting from water security interventions</div>
+          </div>
+          
+          <div class="metric-card">
+            <div class="metric-value">25k+</div>
+            <div class="metric-label">Hectares under sustainable land management practices</div>
+          </div>
+          
+          <div class="metric-card">
+            <div class="metric-value">200+</div>
+            <div class="metric-label">Community members trained in solution implementation</div>
+          </div>
         </div>
       </div>
+    </section>
+    
+    <!-- CASE STUDIES -->
+    <section id="case-studies" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Solution Case Studies</h2>
+          <p class="lead-text">Real-world examples of how our solutions are making a difference in dryland communities and ecosystems.</p>
+        </div>
+        
+        <div class="case-studies-grid">
+          <div class="case-study">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Solar Water Pumping" class="case-study-image">
+            <div class="case-study-content">
+              <h3>Solar-Powered Water for Pastoral Communities</h3>
+              <p>Implementing solar water pumping systems in Northern Kenya, providing reliable water access for 5,000 pastoralists and their livestock.</p>
+              <div class="case-study-meta">
+                <span>Location: Isiolo County</span>
+                <span>2023-2024</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="case-study">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Agroforestry" class="case-study-image">
+            <div class="case-study-content">
+              <h3>Climate-Smart Agroforestry Systems</h3>
+              <p>Introducing drought-resistant tree species with food crops to enhance soil fertility, biodiversity, and farmer resilience in dryland areas.</p>
+              <div class="case-study-meta">
+                <span>Location: Turkana County</span>
+                <span>2022-2025</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="case-study">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Rangeland Restoration" class="case-study-image">
+            <div class="case-study-content">
+              <h3>Community-Based Rangeland Restoration</h3>
+              <p>Partnering with pastoral communities to restore 10,000 hectares of degraded rangelands through managed grazing and reseeding.</p>
+              <div class="case-study-meta">
+                <span>Location: Marsabit County</span>
+                <span>2021-2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- PARTNERSHIPS -->
+    <section id="partners" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Solution Partnerships</h2>
+          <p class="lead-text">Effective solutions require strong partnerships. We collaborate with diverse stakeholders to co-design, implement, and scale interventions.</p>
+        </div>
+        
+        <div class="partners-section">
+          <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">Our Collaborative Network</h3>
+          <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            We work with communities, county governments, research institutions, NGOs, and international agencies to develop solutions that are equitable, evidence-based, and scalable.
+          </p>
+          
+          <div class="partners-logos">
+            <!-- These would be actual partner logos - using placeholders for now -->
+            <img src="https://via.placeholder.com/150x80/3498db/ffffff?text=County+Govt" alt="County Government" class="partner-logo">
+            <img src="https://via.placeholder.com/150x80/2ecc71/ffffff?text=Community+Org" alt="Community Organization" class="partner-logo">
+            <img src="https://via.placeholder.com/150x80/9b59b6/ffffff?text=Research+Inst" alt="Research Institute" class="partner-logo">
+            <img src="https://via.placeholder.com/150x80/e74c3c/ffffff?text=Development+NGO" alt="Development NGO" class="partner-logo">
+            <img src="https://via.placeholder.com/150x80/f39c12/ffffff?text=Intl+Partner" alt="International Partner" class="partner-logo">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-      <div class="footer-col">
-        <h4>Stay Updated</h4>
-        <form class="newsletter">
-          <input type="email" placeholder="Enter your email" required />
-          <button type="submit">Subscribe</button>
-        </form>
+  <!-- CTA SECTION -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Implement Solutions With Us</h2>
+      </div>
+      <p class="lead-text">
+        Partner with ADNRC to implement, scale, or adapt solutions for dryland resilience in your context.
+      </p>
+      <div class="cta-buttons">
+        <a href="support.html" class="cta-button">Partner With Us</a>
+        <a href="mailto:solutions@adnrc.com" class="cta-button secondary">Contact Solutions Team</a>
+        <a href="research.html" class="cta-button secondary">Explore Research</a>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 African Drylands Nexus Research Center. All Rights Reserved.</p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="assets/Logo.png" alt="ADNRC Logo">
+          <h3>African Drylands Nexus Research Center</h3>
+          <p>Advancing integrated WEFE nexus research across Africa's drylands for sustainable development and resilient communities.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-icon" aria-label="Facebook">f</a>
+            <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="data.html">Data Portal</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="support.html">Support Us</a></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <h4>Contact Us</h4>
+          <p><span class="contact-icon">✉</span> solutions@adnrc.org</p>
+          <p><span class="contact-icon">📞</span> +254 710 953 283</p>
+          <p><span class="contact-icon">📍</span> P.O. Box 62000, Isiolo, Kenya</p>
+          <p><span class="contact-icon">🏢</span> Dryland Research Campus, Isiolo County</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 African Drylands Nexus Research Center. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+          <a href="#" style="color: #aaa; text-decoration: none;">Privacy Policy</a> | 
+          <a href="#" style="color: #aaa; text-decoration: none;">Terms of Use</a> | 
+          <a href="#" style="color: #aaa; text-decoration: none;">Accessibility</a>
+        </p>
+      </div>
     </div>
   </footer>
 
-  <!-- JS: mobile nav toggle -->
   <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav-wrapper');
-    toggle.addEventListener('click', () => nav.classList.toggle('show'));
+    // ===== CONSISTENT NAVIGATION WITH HOMEPAGE =====
+    const navToggle = document.getElementById('navToggle');
+    const navWrapper = document.getElementById('navWrapper');
+    const header = document.getElementById('header');
+
+    navToggle.addEventListener('click', () => {
+      navWrapper.classList.toggle('active');
+      navToggle.textContent = navWrapper.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navWrapper.contains(e.target) && !navToggle.contains(e.target)) {
+        navWrapper.classList.remove('active');
+        navToggle.textContent = '☰';
+      }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Update active navigation in solutions nav
+      updateSolutionsNav();
+    });
+
+    // ===== SOLUTIONS NAVIGATION SCROLL =====
+    const solutionsNavLinks = document.querySelectorAll('.solutions-nav a');
+    
+    function updateSolutionsNav() {
+      const scrollPosition = window.scrollY + 150;
+      
+      // Get all sections
+      const sections = document.querySelectorAll('section[id], div[id].section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          solutionsNavLinks.forEach(link => {
+            link.classList.remove('active-nav');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active-nav');
+            }
+          });
+        }
+      });
+    }
+
+    // Smooth scroll for solutions navigation
+    solutionsNavLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Update active nav
+          solutionsNavLinks.forEach(l => l.classList.remove('active-nav'));
+          this.classList.add('active-nav');
+        }
+      });
+    });
+
+    // ===== SMOOTH SCROLLING =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Only process internal page anchors
+        if (href !== '#' && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // Close mobile menu if open
+            navWrapper.classList.remove('active');
+            navToggle.textContent = '☰';
+            
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // ===== ANIMATIONS =====
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simple fade-in animation for cards on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      // Apply to solution cards, case studies, and metrics
+      document.querySelectorAll('.solution-card, .case-study, .metric-card, .approach-step').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(element);
+      });
+    });
   </script>
+
 </body>
 </html>
